@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Блог | ТВОЙ_НИК</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .blog-post {
+            text-align: left;
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+        }
+        .blog-post:last-child { border-bottom: none; }
+        .blog-post .date {
+            font-size: 12px;
+            color: #555577;
+        }
+        .blog-post .title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #ff7eb3;
+            margin: 4px 0;
+        }
+        .blog-post .desc {
+            font-size: 14px;
+            color: #9999bb;
+            line-height: 1.5;
+        }
+        .blog-post .tags {
+            display: flex;
+            gap: 8px;
+            margin-top: 8px;
+            flex-wrap: wrap;
+        }
+        .blog-post .tags span {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.06);
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            color: #7777aa;
+        }
+        .read-more {
+            color: #ff7eb3;
+            text-decoration: none;
+            font-size: 13px;
+            display: inline-block;
+            margin-top: 6px;
+        }
+        .read-more:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" style="color: #555577; text-decoration: none; font-size: 14px; display: block; text-align: left; margin-bottom: 8px;">← Назад</a>
+        
+        <div class="username" style="font-size: 22px;">📝 Блог</div>
+        <div class="divider"></div>
+
+        <!-- Пост 1 -->
+        <div class="blog-post">
+            <div class="date">02 августа 2026</div>
+            <div class="title">Как я настроил Arch Linux с нуля</div>
+            <div class="desc">Пошаговое руководство по установке и настройке Arch Linux с i3wm и неоновой темой...</div>
+            <div class="tags"><span>Arch</span><span>Linux</span><span>i3</span></div>
+            <a href="#" class="read-more">Читать →</a>
+        </div>
+
+        <!-- Пост 2 -->
+        <div class="blog-post">
+            <div class="date">28 июля 2026</div>
+            <div class="title">Обновил стек до Vue 3 + Vite</div>
+            <div class="desc">Почему я перешёл с Vue 2 на Vue 3 и как это ускорило разработку...</div>
+            <div class="tags"><span>Vue</span><span>Vite</span><span>JavaScript</span></div>
+            <a href="#" class="read-more">Читать →</a>
+        </div>
+
+        <div class="footer-tag" style="margin-top: 24px;">&gt; <span>Мои Тех Смейк</span> &lt;</div>
+    </div>
+</body>
+</html>
