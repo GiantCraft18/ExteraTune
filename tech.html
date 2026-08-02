@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Тех Стек | ТВОЙ_НИК</title>
+    <title>Тех Стек | ExteraTune</title>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
         *{margin:0;padding:0;box-sizing:border-box}
@@ -13,12 +13,13 @@
         .username{text-align:center;font-size:24px;font-weight:700;color:#fff;letter-spacing:.5px}
         .back-link{color:#555577;text-decoration:none;font-size:14px;display:block;text-align:left;margin-bottom:8px;transition:.2s}
         .back-link:hover{color:#ff7eb3}
-        .tech-grid{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;padding:8px 0}
+        .tech-grid{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;padding:4px 0 8px}
         .tech-tag{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);padding:6px 14px;border-radius:30px;font-size:13px;color:#8888aa;transition:.2s}
         .tech-tag:hover{background:rgba(255,255,255,.08);color:#fff;border-color:rgba(255,255,255,.12)}
         .tech-tag.ide{background:rgba(255,100,200,.06);border-color:rgba(255,100,200,.12);color:#ff7eb3}
         .tech-tag.ide:hover{background:rgba(255,100,200,.12);border-color:rgba(255,100,200,.25)}
-        .section-label{font-weight:700;color:#c0c0d0;margin-bottom:10px;font-size:14px;text-align:center;letter-spacing:.5px;width:100%}
+        .section-label{font-weight:700;color:#c0c0d0;margin:6px 0 4px;font-size:13px;text-align:center;letter-spacing:.5px;width:100%}
+        .section-label .icon{margin-right:6px}
         .ide-desc{font-size:11px;color:#555577;text-align:center;margin-top:4px;width:100%;line-height:1.6}
         @media(max-width:768px){body{padding:10px;align-items:flex-start;padding-top:20px}.container{padding:20px 15px;border-radius:20px}.tech-tag{font-size:11px;padding:4px 10px}.username{font-size:20px}.section-label{font-size:12px}.ide-desc{font-size:10px}}
         @media(max-width:400px){.container{padding:15px 10px;border-radius:16px}.tech-tag{font-size:10px;padding:3px 8px}.username{font-size:17px}}
@@ -31,29 +32,66 @@
         <div class="username">&gt; Мои Тех. Стек &lt;</div>
         <div class="divider"></div>
 
-        <!-- ===== ТЕХНОЛОГИИ ===== -->
-        <div class="tech-grid">
-            <span class="tech-tag">Python</span>
-            <span class="tech-tag">JS</span>
-            <span class="tech-tag">Bash</span>
-            <span class="tech-tag">Flask</span>
-            <span class="tech-tag">Kurigram</span>
-            <span class="tech-tag">Vue.js</span>
-            <span class="tech-tag">HTML</span>
-            <span class="tech-tag">CSS</span>
-            <span class="tech-tag">Bootstrap</span>
-            <span class="tech-tag">Postman</span>
-            <span class="tech-tag">Git</span>
-            <span class="tech-tag">SQL</span>
-            <span class="tech-tag">Linux</span>
-            <span class="tech-tag">Docker</span>
+        <!-- ===== ЯЗЫКИ ===== -->
+        <div>
+            <div class="section-label"><span class="icon">💻</span>Языки</div>
+            <div class="tech-grid">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">TypeScript</span>
+                <span class="tech-tag">Bash</span>
+                <span class="tech-tag">SQL</span>
+            </div>
+        </div>
+
+        <!-- ===== ФРЕЙМВОРКИ ===== -->
+        <div>
+            <div class="section-label"><span class="icon">⚡</span>Фреймворки</div>
+            <div class="tech-grid">
+                <span class="tech-tag">Flask</span>
+                <span class="tech-tag">FastAPI</span>
+                <span class="tech-tag">Vue.js</span>
+                <span class="tech-tag">React</span>
+                <span class="tech-tag">Bootstrap</span>
+            </div>
+        </div>
+
+        <!-- ===== БАЗЫ ДАННЫХ ===== -->
+        <div>
+            <div class="section-label"><span class="icon">🗄️</span>Базы данных</div>
+            <div class="tech-grid">
+                <span class="tech-tag">PostgreSQL</span>
+                <span class="tech-tag">Redis</span>
+            </div>
+        </div>
+
+        <!-- ===== DEVOPS ===== -->
+        <div>
+            <div class="section-label"><span class="icon">🐳</span>DevOps</div>
+            <div class="tech-grid">
+                <span class="tech-tag">Docker</span>
+                <span class="tech-tag">GitHub Actions</span>
+                <span class="tech-tag">Nginx</span>
+                <span class="tech-tag">Linux</span>
+            </div>
+        </div>
+
+        <!-- ===== ИНСТРУМЕНТЫ ===== -->
+        <div>
+            <div class="section-label"><span class="icon">🛠️</span>Инструменты</div>
+            <div class="tech-grid">
+                <span class="tech-tag">Git</span>
+                <span class="tech-tag">Postman</span>
+                <span class="tech-tag">HTML</span>
+                <span class="tech-tag">CSS</span>
+            </div>
         </div>
 
         <div class="divider"></div>
 
         <!-- ===== СРЕДЫ РАЗРАБОТКИ ===== -->
-        <div style="margin: 6px 0 4px;">
-            <div class="section-label">🛠 Среды разработки</div>
+        <div>
+            <div class="section-label"><span class="icon">🧑‍💻</span>Среды разработки</div>
             <div class="tech-grid">
                 <span class="tech-tag ide">Android Studio</span>
                 <span class="tech-tag ide">Visual Studio Code</span>
