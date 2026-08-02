@@ -2,482 +2,102 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ТВОЙ_НИК | Сайт</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ТВОЙ_НИК</title>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* ===== БАЗОВЫЕ СТИЛИ ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background: #0a0a12;
-            color: #c8c8e8;
-            font-family: 'JetBrains Mono', monospace;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 600px;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 28px;
-            padding: 30px 25px 25px;
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
-        }
-
-        .divider {
-            height: 1px;
-            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.06), transparent);
-            margin: 16px 0;
-        }
-
-        /* ===== НАВИГАЦИЯ ===== */
-        .nav-bar {
-            display: flex;
-            justify-content: center;
-            gap: 6px;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
-            padding: 6px;
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.04);
-        }
-
-        .nav-bar a {
-            color: #8888aa;
-            text-decoration: none;
-            font-size: 13px;
-            padding: 6px 14px;
-            border-radius: 30px;
-            transition: 0.2s;
-            font-weight: 500;
-            letter-spacing: 0.3px;
-        }
-
-        .nav-bar a:hover {
-            color: #fff;
-            background: rgba(255, 255, 255, 0.06);
-        }
-
-        .nav-bar a.active {
-            color: #ff7eb3;
-            background: rgba(255, 100, 200, 0.08);
-            border: 1px solid rgba(255, 100, 200, 0.15);
-        }
-
-        .nav-bar a.blog-link {
-            color: #ff7eb3;
-            border: 1px solid rgba(255, 100, 200, 0.1);
-        }
-
-        .nav-bar a.blog-link:hover {
-            background: rgba(255, 100, 200, 0.12);
-            border-color: rgba(255, 100, 200, 0.3);
-        }
-
-        /* ===== АВАТАР ===== */
-        .avatar {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            margin: 0 auto 16px;
-            overflow: hidden;
-            border: 2px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 0 40px rgba(255, 100, 200, 0.05);
-        }
-
-        .avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        .username {
-            text-align: center;
-            font-size: 24px;
-            font-weight: 700;
-            color: #fff;
-            letter-spacing: 0.5px;
-        }
-
-        .sub {
-            text-align: center;
-            color: #666688;
-            font-size: 14px;
-            margin-top: 4px;
-        }
-
-        .sub span {
-            background: rgba(255, 255, 255, 0.04);
-            padding: 2px 12px;
-            border-radius: 20px;
-        }
-
-        /* ===== СОЦСЕТИ ===== */
-        .links-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-            gap: 8px;
-            margin: 16px 0;
-        }
-
-        .links-grid a {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 10px 8px;
-            border-radius: 12px;
-            text-align: center;
-            color: #9999bb;
-            text-decoration: none;
-            font-size: 13px;
-            transition: 0.2s;
-        }
-
-        .links-grid a:hover {
-            background: rgba(255, 255, 255, 0.06);
-            color: #fff;
-            border-color: rgba(255, 255, 255, 0.1);
-            transform: translateY(-2px);
-        }
-
-        /* ===== ПЛЕЕР ===== */
-        .player-wrapper {
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 16px;
-            padding: 16px 15px;
-            margin: 16px 0;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-        }
-
-        .player-wrapper iframe {
-            width: 100%;
-            border-radius: 12px;
-            border: none;
-        }
-
-        .player-wrapper audio {
-            width: 100%;
-            border-radius: 12px;
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        .player-wrapper audio::-webkit-media-controls-panel {
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        .player-selector {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-bottom: 12px;
-        }
-
-        .player-selector button {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            padding: 6px 14px;
-            border-radius: 30px;
-            color: #8888aa;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 12px;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .player-selector button:hover {
-            background: rgba(255, 255, 255, 0.08);
-            color: #fff;
-        }
-
-        .player-selector button.active {
-            background: rgba(255, 100, 200, 0.08);
-            border-color: rgba(255, 100, 200, 0.2);
-            color: #ff7eb3;
-        }
-
-        .player-container {
-            min-height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .player-container .placeholder {
-            color: #555577;
-            font-size: 13px;
-            text-align: center;
-        }
-
-        .player-container .placeholder .icon {
-            font-size: 28px;
-            display: block;
-            margin-bottom: 6px;
-        }
-
-        .player-container .placeholder a {
-            color: #ff7eb3;
-            text-decoration: underline;
-        }
-
-        /* ===== ССЫЛКИ "ПОДРОБНЕЕ" ===== */
-        .more-links {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin: 8px 0 12px;
-        }
-
-        .more-links a {
-            color: #7a7aaa;
-            text-decoration: none;
-            font-size: 14px;
-            border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
-            padding-bottom: 4px;
-            transition: 0.2s;
-        }
-
-        .more-links a:hover {
-            color: #ff7eb3;
-            border-color: #ff7eb3;
-        }
-
-        /* ===== ФУТЕР ===== */
-        .footer-tag {
-            text-align: center;
-            color: #333355;
-            font-size: 13px;
-            margin-top: 20px;
-            letter-spacing: 1px;
-        }
-
-        .footer-tag span {
-            color: #444466;
-        }
-
-        /* ===== АДАПТИВ ===== */
-        @media (max-width: 500px) {
-            .container {
-                padding: 20px 15px;
-            }
-            .nav-bar a {
-                font-size: 11px;
-                padding: 4px 10px;
-            }
-            .links-grid {
-                grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-            }
-            .links-grid a {
-                font-size: 11px;
-                padding: 8px 4px;
-            }
-            .player-selector button {
-                font-size: 10px;
-                padding: 4px 10px;
-            }
-        }
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{background:#0a0a12;color:#c8c8e8;font-family:'JetBrains Mono',monospace;display:flex;justify-content:center;align-items:center;min-height:100vh;padding:20px}
+        .container{max-width:600px;width:100%;background:rgba(255,255,255,.02);border-radius:28px;padding:30px 25px 25px;border:1px solid rgba(255,255,255,.04);backdrop-filter:blur(10px);box-shadow:0 20px 60px rgba(0,0,0,.6)}
+        .divider{height:1px;background:linear-gradient(to right,transparent,rgba(255,255,255,.06),transparent);margin:16px 0}
+        .nav-bar{display:flex;justify-content:center;gap:6px;flex-wrap:wrap;margin-bottom:20px;padding:6px;background:rgba(255,255,255,.02);border-radius:16px;border:1px solid rgba(255,255,255,.04)}
+        .nav-bar a{color:#8888aa;text-decoration:none;font-size:13px;padding:6px 14px;border-radius:30px;transition:.2s;font-weight:500;letter-spacing:.3px;white-space:nowrap}
+        .nav-bar a:hover{color:#fff;background:rgba(255,255,255,.06)}
+        .nav-bar a.active{color:#ff7eb3;background:rgba(255,100,200,.08);border:1px solid rgba(255,100,200,.15)}
+        .nav-bar a.blog-link{color:#ff7eb3;border:1px solid rgba(255,100,200,.1)}
+        .nav-bar a.blog-link:hover{background:rgba(255,100,200,.12);border-color:rgba(255,100,200,.3)}
+        .avatar{width:120px;height:120px;border-radius:50%;margin:0 auto 16px;overflow:hidden;border:2px solid rgba(255,255,255,.08);box-shadow:0 0 40px rgba(255,100,200,.05);transition:.3s}
+        .avatar img{width:100%;height:100%;object-fit:cover}
+        .username{text-align:center;font-size:24px;font-weight:700;color:#fff;letter-spacing:.5px}
+        .sub{text-align:center;color:#666688;font-size:14px;margin-top:4px}
+        .sub span{background:rgba(255,255,255,.04);padding:2px 12px;border-radius:20px}
+        .links-grid{display:grid;gap:8px;margin:16px 0;grid-template-columns:repeat(auto-fit,minmax(100px,1fr))}
+        .links-grid a{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05);padding:10px 8px;border-radius:12px;text-align:center;color:#9999bb;text-decoration:none;font-size:13px;transition:.2s}
+        .links-grid a:hover{background:rgba(255,255,255,.06);color:#fff;border-color:rgba(255,255,255,.1);transform:translateY(-2px)}
+        .links-grid a:active{transform:scale(.95)}
+        .player-wrapper{background:rgba(255,255,255,.03);border-radius:16px;padding:16px 15px;margin:16px 0;border:1px solid rgba(255,255,255,.06)}
+        .player-wrapper iframe{width:100%;border-radius:12px;border:none}
+        .player-wrapper audio{width:100%;border-radius:12px;background:rgba(255,255,255,.05)}
+        .player-selector{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:12px}
+        .player-selector button{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);padding:6px 14px;border-radius:30px;color:#8888aa;font-family:inherit;font-size:12px;cursor:pointer;transition:.2s;white-space:nowrap}
+        .player-selector button:hover{background:rgba(255,255,255,.08);color:#fff}
+        .player-selector button.active{background:rgba(255,100,200,.08);border-color:rgba(255,100,200,.2);color:#ff7eb3}
+        .player-selector button:active{transform:scale(.92)}
+        .player-container{min-height:80px;display:flex;align-items:center;justify-content:center}
+        .player-container .placeholder{color:#555577;font-size:13px;text-align:center}
+        .player-container .placeholder .icon{font-size:28px;display:block;margin-bottom:6px}
+        .more-links{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:8px 0 12px}
+        .more-links a{color:#7a7aaa;text-decoration:none;font-size:14px;border-bottom:1px dashed rgba(255,255,255,.1);padding-bottom:4px;transition:.2s}
+        .more-links a:hover{color:#ff7eb3;border-color:#ff7eb3}
+        .footer-tag{text-align:center;color:#333355;font-size:13px;margin-top:20px;letter-spacing:1px}
+        .footer-tag span{color:#444466}
+        @media(max-width:768px){body{padding:10px;align-items:flex-start;padding-top:20px}.container{padding:20px 15px;border-radius:20px}.nav-bar a{font-size:11px;padding:5px 10px}.avatar{width:90px;height:90px}.username{font-size:20px}.sub{font-size:12px}.links-grid{grid-template-columns:repeat(3,1fr);gap:6px}.links-grid a{padding:8px 4px;font-size:11px}.player-wrapper{padding:12px 10px;margin:12px 0}.player-selector{gap:4px}.player-selector button{font-size:10px;padding:5px 8px;flex:1 1 auto;min-width:0}.player-wrapper iframe,.player-wrapper .player-container iframe[style*="height:400px"]{height:280px!important}.player-wrapper .player-container iframe[style*="height:166px"]{height:140px!important}.player-wrapper .player-container iframe[style*="height:200px"]{height:160px!important}.player-wrapper .player-container iframe[style*="height:350px"]{height:240px!important}.player-container{min-height:60px}.more-links{gap:8px}.more-links a{font-size:12px}.footer-tag{font-size:11px}}
+        @media(max-width:400px){.container{padding:15px 10px;border-radius:16px}.nav-bar a{font-size:10px;padding:4px 8px}.links-grid{grid-template-columns:repeat(2,1fr);gap:5px}.links-grid a{font-size:10px;padding:6px 4px}.player-selector button{font-size:9px;padding:4px 6px}.player-wrapper iframe,.player-wrapper .player-container iframe[style*="height:400px"]{height:200px!important}.player-wrapper .player-container iframe[style*="height:166px"]{height:120px!important}.player-wrapper .player-container iframe[style*="height:200px"]{height:140px!important}.player-wrapper .player-container iframe[style*="height:350px"]{height:180px!important}.avatar{width:70px;height:70px}.username{font-size:17px}}
+        @media(min-width:769px)and(max-width:1024px){.container{max-width:500px;padding:25px 20px}.links-grid{grid-template-columns:repeat(4,1fr)}.avatar{width:100px;height:100px}}
+        @media(min-width:1025px){.container{max-width:600px;padding:35px 30px;border-radius:32px}.avatar{width:130px;height:130px}.avatar:hover{transform:scale(1.03);border-color:rgba(255,100,200,.2);box-shadow:0 0 60px rgba(255,100,200,.08)}.links-grid{grid-template-columns:repeat(4,1fr);gap:10px}.links-grid a{padding:12px 10px;font-size:14px}.player-selector button{font-size:13px;padding:8px 18px}.player-wrapper iframe{height:400px!important}.player-wrapper .player-container iframe[style*="height:166px"]{height:166px!important}.player-wrapper .player-container iframe[style*="height:200px"]{height:200px!important}.player-wrapper .player-container iframe[style*="height:350px"]{height:350px!important}.more-links a{font-size:15px}.nav-bar a{font-size:14px;padding:8px 18px}}
     </style>
 </head>
 <body>
-    <div class="container">
-
-        <!-- ===== НАВИГАЦИЯ ===== -->
-        <div class="nav-bar">
-            <a href="index.html" class="active">🏠 Главная</a>
-            <a href="tech.html">⚡ Тех Стек</a>
-            <a href="projects.html">📦 Проекты</a>
-            <a href="blog.html" class="blog-link">📝 Блог</a>
-        </div>
-
-        <div class="divider"></div>
-
-        <!-- ===== АВАТАР ===== -->
-        <div class="avatar">
-            <img src="https://avatars.mds.yandex.net/i?id=af33e631e93213bdb137b542a3c9cf7d_l-5318046-images-thumbs&n=13" alt="avatar">
-        </div>
-
-        <div class="username">ТВОЙ_НИК</div>
-        <div class="sub"><span>@твой_тэг</span></div>
-
-        <div class="divider"></div>
-
-        <!-- ===== СОЦСЕТИ ===== -->
-        <div class="links-grid">
-            <a href="https://t.me/ваш_ник" target="_blank">Telegram</a>
-            <a href="https://discord.gg/ваш_сервер" target="_blank">Discord</a>
-            <a href="https://github.com/ваш_ник" target="_blank">GitHub</a>
-            <a href="https://tiktok.com/@ваш_ник" target="_blank">TikTok</a>
-            <a href="blog.html" target="_blank">Блог</a>
-            <a href="https://matrix.to/#/@ваш_ник:matrix.org" target="_blank">Matrix</a>
-            <a href="https://steamcommunity.com/id/ваш_ник" target="_blank">Steam</a>
-        </div>
-
-        <!-- ===== ПЛЕЕР ===== -->
-        <div class="player-wrapper">
-            <div class="player-selector">
-                <button class="active" data-player="youtube">▶ YouTube</button>
-                <button data-player="soundcloud">🎵 SoundCloud</button>
-                <button data-player="yandex">🎧 Яндекс</button>
-                <button data-player="spotify">🔊 Spotify</button>
-                <button data-player="mp3">📁 MP3</button>
-                <button data-player="vk">🎶 VK</button>
-            </div>
-
-            <div id="player-container" class="player-container">
-                <!-- По умолчанию загружается YouTube -->
-            </div>
-        </div>
-
-        <!-- ===== ССЫЛКИ "ПОДРОБНЕЕ" ===== -->
-        <div class="more-links">
-            <a href="tech.html">⚡ Мои Тех Стек</a>
-            <a href="projects.html">📦 Проекты</a>
-            <a href="blog.html">📝 Блог</a>
-        </div>
-
-        <!-- ===== ФУТЕР ===== -->
-        <div class="footer-tag">&gt; <span>Мои Тех Смейк</span> &lt;</div>
-
+<div class="container">
+    <div class="nav-bar">
+        <a href="#" class="active">🏠 Главная</a>
+        <a href="#">⚡ Тех Стек</a>
+        <a href="#">📦 Проекты</a>
+        <a href="#" class="blog-link">📝 Блог</a>
     </div>
-
-    <script>
-        // ===== КОНФИГУРАЦИЯ ПЛЕЕРОВ =====
-        const players = {
-
-            // ---------- YouTube (реальный трек) ----------
-            youtube: {
-                html: `<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0&rel=0" 
-                               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                               allowfullscreen
-                               style="height: 400px; border-radius: 12px;"></iframe>`,
-                description: 'YouTube плеер'
-            },
-
-            // ---------- SoundCloud (реальный трек) ----------
-            soundcloud: {
-                html: `<iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/270577303&color=ff7eb3&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false" 
-                               style="height: 166px; border-radius: 12px;"></iframe>`,
-                description: 'SoundCloud плеер'
-            },
-
-            // ---------- Яндекс Музыка (ваш трек) ----------
-            yandex: {
-                html: `<iframe src="https://music.yandex.ru/iframe/#track/153681603/43077708/" 
-                               width="100%" 
-                               height="400" 
-                               frameborder="0" 
-                               allowfullscreen="true"
-                               style="border-radius: 12px;"></iframe>`,
-                description: 'Яндекс Музыка плеер'
-            },
-
-            // ---------- Spotify (реальный трек) ----------
-            spotify: {
-                html: `<iframe src="https://open.spotify.com/embed/track/4cOdK2wGLETKBW3PvgPWqT" 
-                               style="height: 200px; border-radius: 12px;"></iframe>`,
-                description: 'Spotify плеер'
-            },
-
-            // ---------- MP3 (реальный файл) ----------
-            mp3: {
-                html: `<audio controls style="width: 100%; border-radius: 12px;">
-                           <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-                           Ваш браузер не поддерживает аудио
-                       </audio>
-                       <div style="font-size: 13px; color: #555577; margin-top: 6px; text-align: center;">
-                           📁 Пример MP3 (замените ссылку на свой файл)
-                       </div>`,
-                description: 'MP3 плеер'
-            },
-
-            // ---------- VK Музыка (реальный трек) ----------
-            vk: {
-                html: `<iframe src="https://vk.com/video_ext.php?oid=-2000647066&id=456239018&hash=8b7a6e5c9d3f1a2b" 
-                               style="height: 350px; border-radius: 12px;"></iframe>`,
-                description: 'VK Музыка плеер'
-            }
-        };
-
-        // ===== ЛОГИКА ПЕРЕКЛЮЧЕНИЯ =====
-        const buttons = document.querySelectorAll('.player-selector button');
-        const container = document.getElementById('player-container');
-
-        // Функция загрузки плеера
-        function loadPlayer(type) {
-            const playerData = players[type];
-            
-            if (playerData) {
-                container.innerHTML = playerData.html;
-
-                // Если это Яндекс — проверяем загрузку
-                if (type === 'yandex') {
-                    setTimeout(() => {
-                        const iframe = container.querySelector('iframe');
-                        if (iframe) {
-                            try {
-                                // Пытаемся проверить загрузку iframe
-                                if (iframe.contentDocument && iframe.contentDocument.body) {
-                                    const bodyText = iframe.contentDocument.body.innerText || '';
-                                    if (bodyText.includes('недоступен') || bodyText.includes('доступ')) {
-                                        showYandexError();
-                                    }
-                                }
-                            } catch (e) {
-                                // Если ошибка доступа — возможно регион
-                                // Но так как у вас Россия — это не должно происходить
-                                console.log('Яндекс плеер загружается...');
-                            }
-                        }
-                    }, 3000);
-                }
-            } else {
-                container.innerHTML = `<div class="placeholder"><span class="icon">❌</span>Плеер не найден</div>`;
-            }
-        }
-
-        // Функция ошибки Яндекса (на всякий случай)
-        function showYandexError() {
-            container.innerHTML = `
-                <div class="placeholder">
-                    <span class="icon">🌍</span>
-                    Плеер недоступен<br>
-                    <a href="https://music.yandex.ru/album/43077708/track/153681603" 
-                       target="_blank" 
-                       style="color: #ff7eb3; text-decoration: underline; margin-top: 6px; display: inline-block;">
-                       Открыть на сайте →
-                    </a>
-                </div>
-            `;
-        }
-
-        // Обработчики кнопок
-        buttons.forEach(button => {
-            button.addEventListener('click', function() {
-                // Убираем активный класс у всех кнопок
-                buttons.forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-
-                // Загружаем плеер
-                loadPlayer(this.dataset.player);
-            });
-        });
-
-        // Загружаем YouTube по умолчанию
-        loadPlayer('youtube');
-    </script>
-
+    <div class="divider"></div>
+    <div class="avatar"><img src="https://avatars.mds.yandex.net/i?id=af33e631e93213bdb137b542a3c9cf7d_l-5318046-images-thumbs&n=13" alt="avatar"></div>
+    <div class="username">ТВОЙ_НИК</div>
+    <div class="sub"><span>@твой_тэг</span></div>
+    <div class="divider"></div>
+    <div class="links-grid">
+        <a href="https://t.me/ваш_ник" target="_blank">📱 Telegram</a>
+        <a href="https://discord.gg/ваш_сервер" target="_blank">💬 Discord</a>
+        <a href="https://github.com/ваш_ник" target="_blank">🐙 GitHub</a>
+        <a href="https://tiktok.com/@ваш_ник" target="_blank">🎵 TikTok</a>
+        <a href="#" target="_blank">📝 Блог</a>
+        <a href="https://matrix.to/#/@ваш_ник:matrix.org" target="_blank">🔗 Matrix</a>
+        <a href="https://steamcommunity.com/id/ваш_ник" target="_blank">🎮 Steam</a>
+    </div>
+    <div class="player-wrapper">
+        <div class="player-selector">
+            <button class="active" data-player="youtube">▶ YouTube</button>
+            <button data-player="soundcloud">🎵 SC</button>
+            <button data-player="yandex">🎧 Яндекс</button>
+            <button data-player="spotify">🔊 Spotify</button>
+            <button data-player="mp3">📁 MP3</button>
+            <button data-player="vk">🎶 VK</button>
+        </div>
+        <div id="p" class="player-container"></div>
+    </div>
+    <div class="more-links">
+        <a href="#">⚡ Тех Стек</a>
+        <a href="#">📦 Проекты</a>
+        <a href="#">📝 Блог</a>
+    </div>
+    <div class="footer-tag">&gt; <span>Мои Тех Смейк</span> &lt;</div>
+</div>
+<script>
+const p={youtube:`<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0&rel=0" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen style="height:400px;border-radius:12px;width:100%"></iframe>`,
+soundcloud:`<iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/270577303&color=ff7eb3&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false" style="height:166px;border-radius:12px;width:100%"></iframe>`,
+yandex:`<iframe src="https://music.yandex.ru/iframe/#track/153681603/43077708/" width="100%" height="400" frameborder="0" allowfullscreen style="border-radius:12px"></iframe>`,
+spotify:`<iframe src="https://open.spotify.com/embed/track/4cOdK2wGLETKBW3PvgPWqT" style="height:200px;border-radius:12px;width:100%"></iframe>`,
+mp3:`<audio controls style="width:100%;border-radius:12px"><source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg"></audio><div style="font-size:13px;color:#555577;margin-top:6px;text-align:center">📁 Замени ссылку на свой MP3</div>`,
+vk:`<iframe src="https://vk.com/video_ext.php?oid=-2000647066&id=456239018&hash=8b7a6e5c9d3f1a2b" style="height:350px;border-radius:12px;width:100%"></iframe>`};
+const b=document.querySelectorAll('.player-selector button'),c=document.getElementById('p');
+function l(t){c.innerHTML=p[t]||`<div class="placeholder"><span class="icon">❌</span>Плеер не найден</div>`}
+b.forEach(b=>b.onclick=function(){b.forEach(b=>b.classList.remove('active'));this.classList.add('active');l(this.dataset.player)});
+l('youtube');
+</script>
 </body>
 </html>
