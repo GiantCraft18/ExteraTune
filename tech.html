@@ -16,9 +16,13 @@
         .tech-grid{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;padding:8px 0}
         .tech-tag{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);padding:6px 14px;border-radius:30px;font-size:13px;color:#8888aa;transition:.2s}
         .tech-tag:hover{background:rgba(255,255,255,.08);color:#fff;border-color:rgba(255,255,255,.12)}
+        .tech-tag.ide{background:rgba(255,100,200,.06);border-color:rgba(255,100,200,.12);color:#ff7eb3}
+        .tech-tag.ide:hover{background:rgba(255,100,200,.12);border-color:rgba(255,100,200,.25)}
+        .section-label{font-weight:700;color:#c0c0d0;margin-bottom:10px;font-size:14px;text-align:center;letter-spacing:.5px;width:100%}
         .footer-tag{text-align:center;color:#333355;font-size:13px;margin-top:20px;letter-spacing:1px}
         .footer-tag span{color:#444466}
-        @media(max-width:768px){body{padding:10px;align-items:flex-start;padding-top:20px}.container{padding:20px 15px;border-radius:20px}.tech-tag{font-size:11px;padding:4px 10px}.username{font-size:20px}}
+        .ide-desc{font-size:11px;color:#555577;text-align:center;margin-top:4px;width:100%}
+        @media(max-width:768px){body{padding:10px;align-items:flex-start;padding-top:20px}.container{padding:20px 15px;border-radius:20px}.tech-tag{font-size:11px;padding:4px 10px}.username{font-size:20px}.section-label{font-size:12px}}
         @media(max-width:400px){.container{padding:15px 10px;border-radius:16px}.tech-tag{font-size:10px;padding:3px 8px}.username{font-size:17px}}
     </style>
 </head>
@@ -29,6 +33,7 @@
         <div class="username">&gt; Мои Тех. Стек &lt;</div>
         <div class="divider"></div>
 
+        <!-- ===== ТЕХНОЛОГИИ ===== -->
         <div class="tech-grid">
             <span class="tech-tag">Python</span>
             <span class="tech-tag">JS</span>
@@ -44,6 +49,24 @@
             <span class="tech-tag">SQL</span>
             <span class="tech-tag">Linux</span>
             <span class="tech-tag">Docker</span>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- ===== СРЕДЫ РАЗРАБОТКИ ===== -->
+        <div style="margin: 6px 0 4px;">
+            <div class="section-label">🛠 Среды разработки</div>
+            <div class="tech-grid">
+                <span class="tech-tag ide">Android Studio</span>
+                <span class="tech-tag ide">IntelliJ IDEA</span>
+                <span class="tech-tag ide">VS Code</span>
+                <span class="tech-tag ide">PyCharm</span>
+                <span class="tech-tag ide">WebStorm</span>
+                <span class="tech-tag ide">GitHub Codespaces</span>
+                <span class="tech-tag ide">Jupyter</span>
+                <span class="tech-tag ide">Vim</span>
+            </div>
+            <div class="ide-desc">📱 Android Studio — Java/Kotlin разработка приложений</div>
         </div>
 
         <div class="divider"></div>
