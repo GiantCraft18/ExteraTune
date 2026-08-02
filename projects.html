@@ -24,22 +24,20 @@
         .nav-bar a.blog-link{color:#ff7eb3;border:1px solid rgba(255,100,200,.1)}
         .nav-bar a.blog-link:hover{background:rgba(255,100,200,.12);border-color:rgba(255,100,200,.3)}
         .username{text-align:center;font-size:24px;font-weight:700;background:linear-gradient(135deg,#ff7eb3,#7a00ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:inline-block;width:100%}
-        .project-card{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:20px;padding:20px 18px;margin-bottom:16px;text-align:left;transition:.4s;position:relative;overflow:hidden}
-        .project-card::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(135deg,#ff7eb3,#7a00ff);opacity:0;transition:opacity .4s}
-        .project-card:hover::before{opacity:.03}
-        .project-card:hover{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08);transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,.3)}
-        .project-title{font-size:18px;font-weight:700;color:#ff7eb3;margin-bottom:6px;transition:.3s}
-        .project-card:hover .project-title{background:linear-gradient(135deg,#ff7eb3,#7a00ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-        .project-desc{font-size:14px;color:#8888aa;margin-bottom:12px;line-height:1.5}
-        .project-tags{display:flex;flex-wrap:wrap;gap:8px}
-        .project-tags span{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);padding:2px 12px;border-radius:20px;font-size:11px;color:#555577;letter-spacing:.3px;transition:.3s}
-        .project-card:hover .project-tags span{border-color:rgba(255,100,200,.1);color:#8888aa}
+        .info-card{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:20px;padding:30px 25px;margin:16px 0;text-align:center;transition:.4s;position:relative;overflow:hidden}
+        .info-card::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(135deg,#ff7eb3,#7a00ff);opacity:0;transition:opacity .4s}
+        .info-card:hover::before{opacity:.03}
+        .info-card:hover{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08);transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,.3)}
+        .info-card .icon{font-size:48px;display:block;margin-bottom:12px}
+        .info-card h3{color:#fff;font-size:18px;margin-bottom:8px}
+        .info-card p{color:#8888aa;font-size:14px;line-height:1.8}
+        .info-card .highlight{color:#ff7eb3;font-weight:700}
         .footer-tag{text-align:center;color:#333355;font-size:13px;margin-top:20px;letter-spacing:1px;transition:.3s}
         .footer-tag:hover{color:#8888aa}
         .footer-tag span{color:#444466;opacity:.6;transition:.3s}
         .footer-tag:hover span{opacity:1;text-shadow:0 0 30px rgba(255,0,150,.1)}
-        @media(max-width:500px){.container{padding:20px 15px}.nav-bar a{font-size:11px;padding:4px 10px}.username{font-size:20px}.project-card{padding:16px 14px}.project-title{font-size:16px}.project-desc{font-size:13px}}
-        @media(max-width:380px){.container{padding:15px 10px}.username{font-size:17px}}
+        @media(max-width:500px){.container{padding:20px 15px}.nav-bar a{font-size:11px;padding:4px 10px}.username{font-size:20px}.info-card{padding:20px 16px}.info-card .icon{font-size:36px}.info-card h3{font-size:16px}.info-card p{font-size:13px}}
+        @media(max-width:380px){.container{padding:15px 10px}.username{font-size:17px}.info-card{padding:16px 12px}}
     </style>
 </head>
 <body>
@@ -56,44 +54,31 @@
 
     <div class="divider"></div>
 
-    <div class="username">&gt; Мои Проекты &lt;</div>
+    <div class="username">&gt; О проекте &lt;</div>
 
     <div class="divider"></div>
 
-    <!-- ===== ПРОЕКТ 1 ===== -->
-    <div class="project-card">
-        <div class="project-title">🚀 ExteraTune</div>
-        <div class="project-desc">Сайт-визитка с плеером и тёмной темой. Полностью адаптивный.</div>
-        <div class="project-tags">
-            <span>HTML</span>
-            <span>CSS</span>
-            <span>JavaScript</span>
-            <span>API</span>
-        </div>
+    <!-- ===== ИНФОРМАЦИЯ О САЙТЕ ===== -->
+    <div class="info-card">
+        <span class="icon">🚀</span>
+        <h3>ExteraTune</h3>
+        <p>
+            Этот сайт создан с помощью <span class="highlight">DeepSeek</span> — 
+            искусственного интеллекта, который помог написать код.<br><br>
+            Хостинг и деплой осуществлены через 
+            <span class="highlight">GitHub Pages</span>.
+        </p>
     </div>
 
-    <!-- ===== ПРОЕКТ 2 ===== -->
-    <div class="project-card">
-        <div class="project-title">🐍 Telegram Bot</div>
-        <div class="project-desc">Бот для Telegram с автоматизацией и интеграцией с внешними API.</div>
-        <div class="project-tags">
-            <span>Python</span>
-            <span>Aiogram</span>
-            <span>PostgreSQL</span>
-            <span>Docker</span>
-        </div>
-    </div>
-
-    <!-- ===== ПРОЕКТ 3 ===== -->
-    <div class="project-card">
-        <div class="project-title">📊 Dashboard</div>
-        <div class="project-desc">Веб-панель для мониторинга и управления проектами.</div>
-        <div class="project-tags">
-            <span>Vue.js</span>
-            <span>FastAPI</span>
-            <span>Redis</span>
-            <span>Nginx</span>
-        </div>
+    <div class="info-card">
+        <span class="icon">💡</span>
+        <h3>Технологии</h3>
+        <p>
+            <span class="highlight">HTML</span> · 
+            <span class="highlight">CSS</span> · 
+            <span class="highlight">JavaScript</span><br>
+            Адаптивный дизайн · Тёмная тема · Анимации
+        </p>
     </div>
 
     <div class="divider"></div>
