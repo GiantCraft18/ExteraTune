@@ -30,11 +30,68 @@
         .sub{text-align:center;color:#8888aa;font-size:14px;margin-top:4px}
         .sub span{background:rgba(255,255,255,.04);padding:2px 12px;border-radius:20px;border:1px solid rgba(255,255,255,.06);display:inline-block;transition:.3s}
         .sub span:hover{border-color:#ff7eb3;background:rgba(255,255,255,.06)}
-        .links-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:8px;margin:16px 0}
-        .links-grid a{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05);padding:10px 8px;border-radius:12px;text-align:center;color:#9999bb;text-decoration:none;font-size:13px;transition:.3s;position:relative;overflow:hidden}
-        .links-grid a::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(135deg,#ff7eb3,#7a00ff);opacity:.06;transition:left .5s}
-        .links-grid a:hover::before{left:0}
-        .links-grid a:hover{background:rgba(255,255,255,.06);color:#fff;border-color:#ff7eb3;transform:translateY(-2px)scale(1.02);box-shadow:0 8px 25px rgba(255,0,150,.05)}
+        
+        /* ===== СОЦИАЛЬНЫЕ СЕТИ С ЭФФЕКТОМ СТЕКЛО ===== */
+        .social-glass {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin: 16px 0;
+            flex-wrap: wrap;
+        }
+        
+        .social-glass a {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 10px 14px;
+            border-radius: 14px;
+            color: #8888aa;
+            text-decoration: none;
+            font-size: 22px;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .social-glass a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 100, 200, 0.03), rgba(122, 0, 255, 0.03));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        
+        .social-glass a:hover {
+            color: #ff7eb3;
+            border-color: rgba(255, 100, 200, 0.15);
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 35px rgba(255, 0, 150, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+        
+        .social-glass a:hover::before {
+            opacity: 1;
+        }
+        
+        .social-glass a:active {
+            transform: scale(0.92);
+        }
+        
+        .social-glass a .label {
+            font-size: 12px;
+            font-weight: 400;
+            letter-spacing: 0.3px;
+        }
 
         /* ===== СУПЕР-УЛУЧШЕННАЯ РАМКА ПЛЕЕРА ===== */
         .player-wrapper {
@@ -48,7 +105,6 @@
             box-shadow: 0 0 30px rgba(255, 100, 200, 0.03);
         }
 
-        /* Неоновая рамка */
         .player-wrapper::before {
             content: '';
             position: absolute;
@@ -66,7 +122,6 @@
             filter: blur(2px);
         }
 
-        /* Вторая рамка для усиления свечения */
         .player-wrapper::after {
             content: '';
             position: absolute;
@@ -168,8 +223,9 @@
         .footer-tag:hover{color:#8888aa}
         .footer-tag span{color:#444466;opacity:.6;transition:.3s}
         .footer-tag:hover span{opacity:1;text-shadow:0 0 30px rgba(255,0,150,.1)}
-        @media(max-width:500px){.container{padding:20px 15px}.nav-bar a{font-size:11px;padding:4px 10px}.links-grid{grid-template-columns:repeat(auto-fit,minmax(80px,1fr))}.links-grid a{font-size:11px;padding:8px 4px}.avatar{width:90px;height:90px}.username{font-size:20px}.player-wrapper iframe{height:280px}.player-wrapper::before{border-radius:18px}.player-wrapper::after{border-radius:20px}}
-        @media(max-width:380px){.container{padding:15px 10px}.username{font-size:17px}.links-grid a{font-size:10px;padding:6px 3px}.avatar{width:70px;height:70px}.player-wrapper iframe{height:200px}}
+        
+        @media(max-width:500px){.container{padding:20px 15px}.nav-bar a{font-size:11px;padding:4px 10px}.avatar{width:90px;height:90px}.username{font-size:20px}.player-wrapper iframe{height:280px}.player-wrapper::before{border-radius:18px}.player-wrapper::after{border-radius:20px}.social-glass a{padding:8px 12px;font-size:18px}.social-glass a .label{font-size:10px}}
+        @media(max-width:380px){.container{padding:15px 10px}.username{font-size:17px}.avatar{width:70px;height:70px}.player-wrapper iframe{height:200px}.social-glass a{padding:6px 10px;font-size:16px}.social-glass a .label{font-size:9px}}
     </style>
 </head>
 <body>
@@ -193,13 +249,23 @@
 
     <div class="divider"></div>
 
-    <!-- ===== СОЦСЕТИ ===== -->
-    <div class="links-grid">
-        <a href="https://t.me/ExteraTune" target="_blank">📱 Telegram</a>
-        <a href="https://discord.gg/ваш_сервер" target="_blank">💬 Discord</a>
-        <a href="https://github.com/giantcraft18" target="_blank">🐙 GitHub</a>
-        <a href="https://tiktok.com/@ваш_ник" target="_blank">🎵 TikTok</a>
-        <a href="https://steamcommunity.com/id/Delovoy_Cat" target="_blank">🎮 Steam</a>
+    <!-- ===== СОЦИАЛЬНЫЕ СЕТИ С ЭФФЕКТОМ СТЕКЛО ===== -->
+    <div class="social-glass">
+        <a href="https://t.me/ExteraTune" target="_blank">
+            📱 <span class="label">Telegram</span>
+        </a>
+        <a href="https://github.com/giantcraft18" target="_blank">
+            🐙 <span class="label">GitHub</span>
+        </a>
+        <a href="https://discord.gg/ваш_сервер" target="_blank">
+            💬 <span class="label">Discord</span>
+        </a>
+        <a href="https://tiktok.com/@ваш_ник" target="_blank">
+            🎵 <span class="label">TikTok</span>
+        </a>
+        <a href="https://steamcommunity.com/id/Delovoy_Cat" target="_blank">
+            🎮 <span class="label">Steam</span>
+        </a>
     </div>
 
     <!-- ===== ПЛЕЕР ===== -->
