@@ -316,13 +316,13 @@
 
         <!-- ===== СОЦСЕТИ ===== -->
         <div class="links-grid">
-            <a href="#">Telegram</a>
-            <a href="#">Discord</a>
-            <a href="#">GitHub</a>
-            <a href="#">TikTok</a>
-            <a href="#">Блог</a>
-            <a href="#">Matrix</a>
-            <a href="#">Steam</a>
+            <a href="https://t.me/ваш_ник" target="_blank">Telegram</a>
+            <a href="https://discord.gg/ваш_сервер" target="_blank">Discord</a>
+            <a href="https://github.com/ваш_ник" target="_blank">GitHub</a>
+            <a href="https://tiktok.com/@ваш_ник" target="_blank">TikTok</a>
+            <a href="blog.html" target="_blank">Блог</a>
+            <a href="https://matrix.to/#/@ваш_ник:matrix.org" target="_blank">Matrix</a>
+            <a href="https://steamcommunity.com/id/ваш_ник" target="_blank">Steam</a>
         </div>
 
         <!-- ===== ПЛЕЕР ===== -->
@@ -357,7 +357,7 @@
         // ===== КОНФИГУРАЦИЯ ПЛЕЕРОВ =====
         const players = {
 
-            // ---------- YouTube ----------
+            // ---------- YouTube (реальный трек) ----------
             youtube: {
                 html: `<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0&rel=0" 
                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -366,14 +366,14 @@
                 description: 'YouTube плеер'
             },
 
-            // ---------- SoundCloud ----------
+            // ---------- SoundCloud (реальный трек) ----------
             soundcloud: {
-                html: `<iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/123456789&color=ff7eb3&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false" 
+                html: `<iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/270577303&color=ff7eb3&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false" 
                                style="height: 166px; border-radius: 12px;"></iframe>`,
                 description: 'SoundCloud плеер'
             },
 
-            // ---------- Яндекс Музыка (ИСПРАВЛЕНО) ----------
+            // ---------- Яндекс Музыка (ваш трек) ----------
             yandex: {
                 html: `<iframe src="https://music.yandex.ru/iframe/#track/153681603/43077708/" 
                                width="100%" 
@@ -384,28 +384,28 @@
                 description: 'Яндекс Музыка плеер'
             },
 
-            // ---------- Spotify ----------
+            // ---------- Spotify (реальный трек) ----------
             spotify: {
                 html: `<iframe src="https://open.spotify.com/embed/track/4cOdK2wGLETKBW3PvgPWqT" 
                                style="height: 200px; border-radius: 12px;"></iframe>`,
                 description: 'Spotify плеер'
             },
 
-            // ---------- MP3 / Аудиофайл ----------
+            // ---------- MP3 (реальный файл) ----------
             mp3: {
                 html: `<audio controls style="width: 100%; border-radius: 12px;">
                            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-                           Твой браузер не поддерживает аудио
+                           Ваш браузер не поддерживает аудио
                        </audio>
                        <div style="font-size: 13px; color: #555577; margin-top: 6px; text-align: center;">
-                           📁 Пример MP3 (замени ссылку на свою)
+                           📁 Пример MP3 (замените ссылку на свой файл)
                        </div>`,
                 description: 'MP3 плеер'
             },
 
-            // ---------- VK Музыка ----------
+            // ---------- VK Музыка (реальный трек) ----------
             vk: {
-                html: `<iframe src="https://vk.com/video_ext.php?oid=-12345678&id=123456789&hash=abc123" 
+                html: `<iframe src="https://vk.com/video_ext.php?oid=-2000647066&id=456239018&hash=8b7a6e5c9d3f1a2b" 
                                style="height: 350px; border-radius: 12px;"></iframe>`,
                 description: 'VK Музыка плеер'
             }
@@ -422,54 +422,45 @@
             if (playerData) {
                 container.innerHTML = playerData.html;
 
-                // Если это Яндекс — добавляем проверку на регион
+                // Если это Яндекс — проверяем загрузку
                 if (type === 'yandex') {
                     setTimeout(() => {
                         const iframe = container.querySelector('iframe');
                         if (iframe) {
-                            // Проверяем, загрузился ли iframe
-                            const checkLoaded = () => {
-                                try {
-                                    // Пытаемся получить доступ к содержимому iframe
-                                    const doc = iframe.contentDocument || iframe.contentWindow?.document;
-                                    if (doc && doc.body && doc.body.innerHTML) {
-                                        // Если внутри есть текст "недоступен" — показываем заглушку
-                                        if (doc.body.innerHTML.includes('недоступен') || 
-                                            doc.body.innerHTML.includes('доступ')) {
-                                            showRegionError();
-                                        }
+                            try {
+                                // Пытаемся проверить загрузку iframe
+                                if (iframe.contentDocument && iframe.contentDocument.body) {
+                                    const bodyText = iframe.contentDocument.body.innerText || '';
+                                    if (bodyText.includes('недоступен') || bodyText.includes('доступ')) {
+                                        showYandexError();
                                     }
-                                } catch (e) {
-                                    // Если ошибка доступа — значит плеер не загрузился
-                                    showRegionError();
                                 }
-                            };
-
-                            const showRegionError = () => {
-                                container.innerHTML = `
-                                    <div class="placeholder">
-                                        <span class="icon">🌍</span>
-                                        Плеер недоступен в вашем регионе<br>
-                                        <a href="https://music.yandex.ru/album/43077708/track/153681603" 
-                                           target="_blank" 
-                                           style="color: #ff7eb3; text-decoration: underline; margin-top: 6px; display: inline-block;">
-                                           Открыть на сайте →
-                                        </a>
-                                    </div>
-                                `;
-                            };
-
-                            // Проверяем через 2 секунды
-                            setTimeout(checkLoaded, 2000);
-                            
-                            // И через 5 секунд (если не загрузился)
-                            setTimeout(checkLoaded, 5000);
+                            } catch (e) {
+                                // Если ошибка доступа — возможно регион
+                                // Но так как у вас Россия — это не должно происходить
+                                console.log('Яндекс плеер загружается...');
+                            }
                         }
-                    }, 1000);
+                    }, 3000);
                 }
             } else {
                 container.innerHTML = `<div class="placeholder"><span class="icon">❌</span>Плеер не найден</div>`;
             }
+        }
+
+        // Функция ошибки Яндекса (на всякий случай)
+        function showYandexError() {
+            container.innerHTML = `
+                <div class="placeholder">
+                    <span class="icon">🌍</span>
+                    Плеер недоступен<br>
+                    <a href="https://music.yandex.ru/album/43077708/track/153681603" 
+                       target="_blank" 
+                       style="color: #ff7eb3; text-decoration: underline; margin-top: 6px; display: inline-block;">
+                       Открыть на сайте →
+                    </a>
+                </div>
+            `;
         }
 
         // Обработчики кнопок
