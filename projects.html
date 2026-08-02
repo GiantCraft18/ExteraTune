@@ -76,9 +76,7 @@
     <div class="filter-bar">
         <button class="filter-btn active" data-filter="all">🎯 Все</button>
         <button class="filter-btn" data-filter="web">🌐 Сайты</button>
-        <button class="filter-btn" data-filter="bot">🤖 Боты</button>
-        <button class="filter-btn" data-filter="tool">🛠️ Инструменты</button>
-        <button class="filter-btn" data-filter="other">📦 Другое</button>
+        <button class="filter-btn" data-filter="app">📱 Приложения</button>
     </div>
 
     <!-- ===== ПРОЕКТ 1 (Сайт) ===== -->
@@ -95,52 +93,13 @@
         </div>
     </div>
 
-    <!-- ===== ПРОЕКТ 2 (Бот) ===== -->
-    <div class="project-card" data-category="bot">
-        <span class="project-status wip">🚧 В разработке</span>
-        <div class="project-title">🤖 Telegram Bot</div>
-        <div class="project-desc">Бот для Telegram с автоматизацией и интеграцией с внешними API.</div>
-        <div class="project-tags">
-            <span>Python</span><span>Aiogram</span><span>PostgreSQL</span><span>Docker</span>
-        </div>
-        <div class="project-links">
-            <a href="https://github.com/giantcraft18" target="_blank">🐙 GitHub</a>
-        </div>
-    </div>
-
-    <!-- ===== ПРОЕКТ 3 (Инструмент) ===== -->
-    <div class="project-card" data-category="tool">
-        <span class="project-status done">✅ Завершён</span>
-        <div class="project-title">🛠️ Dev Dashboard</div>
-        <div class="project-desc">Веб-панель для мониторинга и управления проектами. Удобный интерфейс.</div>
-        <div class="project-tags">
-            <span>Vue.js</span><span>FastAPI</span><span>Redis</span><span>Nginx</span>
-        </div>
-        <div class="project-links">
-            <a href="https://github.com/giantcraft18" target="_blank">🐙 GitHub</a>
-        </div>
-    </div>
-
-    <!-- ===== ПРОЕКТ 4 (Другое) ===== -->
-    <div class="project-card" data-category="other">
+    <!-- ===== ПРОЕКТ 2 (Приложение) ===== -->
+    <div class="project-card" data-category="app">
         <span class="project-status plan">📝 Планируется</span>
-        <div class="project-title">📦 Open Source Library</div>
-        <div class="project-desc">Библиотека для работы с API. Цель — сделать удобный инструмент для разработчиков.</div>
+        <div class="project-title">📱 Aurora</div>
+        <div class="project-desc">Мессенджер для общения. Удобный интерфейс, быстрый обмен сообщениями.</div>
         <div class="project-tags">
-            <span>TypeScript</span><span>Node.js</span><span>NPM</span>
-        </div>
-        <div class="project-links">
-            <a href="https://github.com/giantcraft18" target="_blank">🐙 GitHub</a>
-        </div>
-    </div>
-
-    <!-- ===== ПРОЕКТ 5 (Сайт) ===== -->
-    <div class="project-card" data-category="web">
-        <span class="project-status wip">🚧 В разработке</span>
-        <div class="project-title">🌐 Portfolio 2.0</div>
-        <div class="project-desc">Обновлённое портфолио с новыми проектами и современным дизайном.</div>
-        <div class="project-tags">
-            <span>React</span><span>Next.js</span><span>Tailwind</span>
+            <span>React</span><span>Node.js</span><span>WebSocket</span><span>PostgreSQL</span>
         </div>
         <div class="project-links">
             <a href="https://github.com/giantcraft18" target="_blank">🐙 GitHub</a>
@@ -161,7 +120,6 @@
 
         filterButtons.forEach(button => {
             button.addEventListener('click', function() {
-                // Убираем активный класс у всех кнопок
                 filterButtons.forEach(btn => btn.classList.remove('active'));
                 this.classList.add('active');
 
