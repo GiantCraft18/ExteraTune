@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>ExteraTune | Сайт</title>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -232,29 +232,6 @@
             text-decoration: underline;
         }
 
-        /* ===== ССЫЛКИ "ПОДРОБНЕЕ" ===== */
-        .more-links {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin: 8px 0 12px;
-        }
-
-        .more-links a {
-            color: #7a7aaa;
-            text-decoration: none;
-            font-size: 14px;
-            border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
-            padding-bottom: 4px;
-            transition: 0.2s;
-        }
-
-        .more-links a:hover {
-            color: #ff7eb3;
-            border-color: #ff7eb3;
-        }
-
         /* ===== ФУТЕР ===== */
         .footer-tag {
             text-align: center;
@@ -297,6 +274,7 @@
         <!-- ===== НАВИГАЦИЯ ===== -->
         <div class="nav-bar">
             <a href="index.html" class="active">🏠 Главная</a>
+            <a href="about.html">👤 Обо мне</a>
             <a href="tech.html">⚡ Тех Стек</a>
             <a href="projects.html">📦 Проекты</a>
             <a href="blog.html" class="blog-link">📝 Блог</a>
@@ -316,13 +294,13 @@
 
         <!-- ===== СОЦСЕТИ ===== -->
         <div class="links-grid">
-            <a href="https://t.me/ExteraTune" target="_blank">Telegram</a>
-            <a href="https://discord.gg/ваш_сервер" target="_blank">Discord</a>
-            <a href="https://github.com/ваш_ник" target="_blank">GitHub</a>
-            <a href="https://tiktok.com/@ваш_ник" target="_blank">TikTok</a>
-            <a href="blog.html" target="_blank">Блог</a>
-            <a href="https://matrix.to/#/@ваш_ник:matrix.org" target="_blank">Matrix</a>
-            <a href="https://steamcommunity.com/id/ваш_ник" target="_blank">Steam</a>
+            <a href="https://t.me/ExteraTune" target="_blank">📱 Telegram</a>
+            <a href="https://discord.gg/ваш_сервер" target="_blank">💬 Discord</a>
+            <a href="https://github.com/ваш_ник" target="_blank">🐙 GitHub</a>
+            <a href="https://tiktok.com/@ваш_ник" target="_blank">🎵 TikTok</a>
+            <a href="blog.html" target="_blank">📝 Блог</a>
+            <a href="https://matrix.to/#/@ваш_ник:matrix.org" target="_blank">🔗 Matrix</a>
+            <a href="https://steamcommunity.com/id/ваш_ник" target="_blank">🎮 Steam</a>
         </div>
 
         <!-- ===== ПЛЕЕР ===== -->
@@ -341,15 +319,8 @@
             </div>
         </div>
 
-        <!-- ===== ССЫЛКИ "ПОДРОБНЕЕ" ===== -->
-        <div class="more-links">
-            <a href="tech.html">⚡ Мои Тех Стек</a>
-            <a href="projects.html">📦 Проекты</a>
-            <a href="blog.html">📝 Блог</a>
-        </div>
-
         <!-- ===== ФУТЕР ===== -->
-        <div class="footer-tag">&gt; <span>Мои Тех Смейк</span> &lt;</div>
+        <div class="footer-tag">&gt; <span>ExteraTune</span> &lt;</div>
 
     </div>
 
@@ -418,7 +389,7 @@
         // Функция загрузки плеера
         function loadPlayer(type) {
             const playerData = players[type];
-            
+
             if (playerData) {
                 container.innerHTML = playerData.html;
 
@@ -437,7 +408,6 @@
                                 }
                             } catch (e) {
                                 // Если ошибка доступа — возможно регион
-                                // Но так как у вас Россия — это не должно происходить
                                 console.log('Яндекс плеер загружается...');
                             }
                         }
