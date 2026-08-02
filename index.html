@@ -7,7 +7,6 @@
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Дополнительные стили для навигации */
         .nav-bar {
             display: flex;
             justify-content: center;
@@ -46,6 +45,102 @@
             background: rgba(255, 100, 200, 0.12);
             border-color: rgba(255, 100, 200, 0.3);
         }
+
+        /* ===== СТИЛИ ДЛЯ ПЛЕЕРА ===== */
+        .player-wrapper {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 16px 15px;
+            margin: 16px 0;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .player-wrapper iframe {
+            width: 100%;
+            border-radius: 12px;
+            border: none;
+        }
+
+        .player-wrapper audio {
+            width: 100%;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .player-wrapper audio::-webkit-media-controls-panel {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .player-selector {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 12px;
+        }
+
+        .player-selector button {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 6px 14px;
+            border-radius: 30px;
+            color: #8888aa;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .player-selector button:hover {
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+        }
+
+        .player-selector button.active {
+            background: rgba(255, 100, 200, 0.08);
+            border-color: rgba(255, 100, 200, 0.2);
+            color: #ff7eb3;
+        }
+
+        .player-container {
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .player-container .placeholder {
+            color: #555577;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        .player-container .placeholder .icon {
+            font-size: 28px;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        /* Ссылка "Подробнее" */
+        .more-links {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin: 8px 0 12px;
+        }
+        .more-links a {
+            color: #7a7aaa;
+            text-decoration: none;
+            font-size: 14px;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+            padding-bottom: 4px;
+            transition: 0.2s;
+        }
+        .more-links a:hover {
+            color: #ff7eb3;
+            border-color: #ff7eb3;
+        }
     </style>
 </head>
 <body>
@@ -83,14 +178,114 @@
         </div>
 
         <!-- ===== ПЛЕЕР ===== -->
-        <div class="player-placeholder">
-            <span class="icon">▶</span>
-            <span>Unable to load track</span>
+        <div class="player-wrapper">
+            <div class="player-selector">
+                <button class="active" data-player="youtube">▶ YouTube</button>
+                <button data-player="soundcloud">🎵 SoundCloud</button>
+                <button data-player="yandex">🎧 Яндекс</button>
+                <button data-player="spotify">🔊 Spotify</button>
+                <button data-player="mp3">📁 MP3</button>
+                <button data-player="vk">🎶 VK</button>
+            </div>
+
+            <div id="player-container" class="player-container">
+                <!-- Сюда подгружается плеер -->
+                <div class="placeholder">
+                    <span class="icon">🎵</span>
+                    Выбери источник музыки
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== ССЫЛКИ "ПОДРОБНЕЕ" ===== -->
+        <div class="more-links">
+            <a href="tech.html">⚡ Мои Тех Стек</a>
+            <a href="projects.html">📦 Проекты</a>
+            <a href="blog.html">📝 Блог</a>
         </div>
 
         <!-- ===== ФУТЕР ===== -->
         <div class="footer-tag">&gt; <span>Мои Тех Смейк</span> &lt;</div>
 
     </div>
+
+    <script>
+        // ===== КОНФИГУРАЦИЯ ПЛЕЕРОВ =====
+        const players = {
+
+            // ---------- YouTube ----------
+            youtube: {
+                html: `<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0&rel=0" 
+                               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                               allowfullscreen
+                               style="height: 180px;"></iframe>`,
+                description: 'YouTube плеер'
+            },
+
+            // ---------- SoundCloud ----------
+            soundcloud: {
+                html: `<iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/123456789&color=ff7eb3&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false" 
+                               style="height: 120px;"></iframe>`,
+                description: 'SoundCloud плеер'
+            },
+
+            // ---------- Яндекс Музыка ----------
+            yandex: {
+                html: `<iframe src="https://music.yandex.ru/iframe/#track/12345678/98765432/" 
+                               style="height: 120px;"></iframe>`,
+                description: 'Яндекс Музыка плеер'
+            },
+
+            // ---------- Spotify ----------
+            spotify: {
+                html: `<iframe src="https://open.spotify.com/embed/track/4cOdK2wGLETKBW3PvgPWqT" 
+                               style="height: 80px;"></iframe>`,
+                description: 'Spotify плеер'
+            },
+
+            // ---------- MP3 / Аудиофайл ----------
+            mp3: {
+                html: `<audio controls style="width: 100%;">
+                           <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+                           Твой браузер не поддерживает аудио
+                       </audio>
+                       <div style="font-size: 11px; color: #555577; margin-top: 6px; text-align: center;">
+                           🎵 Пример MP3 (замени ссылку на свою)
+                       </div>`,
+                description: 'MP3 плеер'
+            },
+
+            // ---------- VK Музыка ----------
+            vk: {
+                html: `<iframe src="https://vk.com/video_ext.php?oid=-12345678&id=123456789&hash=abc123" 
+                               style="height: 180px;"></iframe>`,
+                description: 'VK Музыка плеер'
+            }
+        };
+
+        // ===== ЛОГИКА ПЕРЕКЛЮЧЕНИЯ =====
+        const buttons = document.querySelectorAll('.player-selector button');
+        const container = document.getElementById('player-container');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Убираем активный класс у всех кнопок
+                buttons.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+
+                // Получаем тип плеера
+                const type = this.dataset.player;
+                const playerData = players[type];
+
+                // Вставляем HTML плеера
+                if (playerData) {
+                    container.innerHTML = playerData.html;
+                } else {
+                    container.innerHTML = `<div class="placeholder"><span class="icon">❌</span>Плеер не найден</div>`;
+                }
+            });
+        });
+    </script>
+
 </body>
 </html>
