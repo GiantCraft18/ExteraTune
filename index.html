@@ -81,10 +81,10 @@
         <a href="https://steamcommunity.com/id/ваш_ник" target="_blank">🎮 Steam</a>
     </div>
 
-    <!-- ===== ПЛЕЕР (ПЛЕЙЛИСТ) ===== -->
+    <!-- ===== ПЛЕЕР (ОДИН ТРЕК) ===== -->
     <div class="player-wrapper">
         <div id="p" class="player-container">
-            <iframe src="https://music.yandex.ru/iframe/#playlist/673f934c-4842-03c4-b0c5-4e26a094809e/" 
+            <iframe src="https://music.yandex.ru/iframe/#track/153681603/43077708/" 
                     width="100%" 
                     height="400" 
                     frameborder="0" 
@@ -100,20 +100,19 @@
 </div>
 
 <script>
-    // Проверяем, загрузился ли плеер
+    // Если плеер не загрузился — показываем ссылку
     setTimeout(() => {
         const iframe = document.querySelector('.player-wrapper iframe');
         if (iframe) {
-            // Если плеер не загрузился — показываем ссылку
             iframe.onerror = function() {
                 document.getElementById('p').innerHTML = `
                     <div class="placeholder">
                         <span class="icon">🎵</span>
-                        Плеер временно недоступен<br>
-                        <a href="https://music.yandex.ru/playlists/673f934c-4842-03c4-b0c5-4e26a094809e" 
+                        Плеер недоступен<br>
+                        <a href="https://music.yandex.ru/album/43077708/track/153681603" 
                            target="_blank" 
                            style="color: #ff7eb3; text-decoration: underline; margin-top: 6px; display: inline-block;">
-                           Открыть плейлист →
+                           Открыть трек →
                         </a>
                     </div>
                 `;
