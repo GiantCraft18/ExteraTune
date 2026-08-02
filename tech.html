@@ -16,16 +16,10 @@
         .tech-grid{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;padding:8px 0}
         .tech-tag{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);padding:6px 14px;border-radius:30px;font-size:13px;color:#8888aa;transition:.2s}
         .tech-tag:hover{background:rgba(255,255,255,.08);color:#fff;border-color:rgba(255,255,255,.12)}
-        .github-section{text-align:left;font-size:14px;color:#8888aa;margin:10px 0}
-        .github-section .label{font-weight:700;color:#c0c0d0;margin-bottom:6px}
-        .github-section .wrapper{background:rgba(255,255,255,.03);border-radius:12px;padding:16px;border:1px solid rgba(255,255,255,.05);text-align:center}
-        .github-section .wrapper iframe{width:100%;height:200px;border:none;border-radius:8px;background:#0d1117}
-        .github-section .wrapper .fallback{color:#555577;font-size:13px;padding:20px 0}
-        .github-section .wrapper .fallback a{color:#ff7eb3;text-decoration:underline}
         .footer-tag{text-align:center;color:#333355;font-size:13px;margin-top:20px;letter-spacing:1px}
         .footer-tag span{color:#444466}
-        @media(max-width:768px){body{padding:10px;align-items:flex-start;padding-top:20px}.container{padding:20px 15px;border-radius:20px}.tech-tag{font-size:11px;padding:4px 10px}.github-section .wrapper{padding:10px}.github-section .wrapper iframe{height:160px}.username{font-size:20px}}
-        @media(max-width:400px){.container{padding:15px 10px;border-radius:16px}.tech-tag{font-size:10px;padding:3px 8px}.username{font-size:17px}.github-section .wrapper iframe{height:130px}}
+        @media(max-width:768px){body{padding:10px;align-items:flex-start;padding-top:20px}.container{padding:20px 15px;border-radius:20px}.tech-tag{font-size:11px;padding:4px 10px}.username{font-size:20px}}
+        @media(max-width:400px){.container{padding:15px 10px;border-radius:16px}.tech-tag{font-size:10px;padding:3px 8px}.username{font-size:17px}}
     </style>
 </head>
 <body>
@@ -54,46 +48,7 @@
 
         <div class="divider"></div>
 
-        <!-- ===== GITHUB CONTRIBUTIONS (IFRAME) ===== -->
-        <div class="github-section">
-            <div class="label">&gt; GitHub Contributions &lt;</div>
-            <div class="wrapper">
-                <iframe src="https://github.com/giantcraft18" 
-                        scrolling="no"
-                        onload="this.style.height='200px'"
-                        onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
-                </iframe>
-                <div class="fallback" style="display:none;">
-                    📊 Шкала временно недоступна<br>
-                    <a href="https://github.com/giantcraft18" target="_blank">Открыть профиль →</a>
-                </div>
-            </div>
-        </div>
-
         <div class="footer-tag">&gt; <span>Активность Проектов</span> &lt;</div>
     </div>
-
-    <script>
-        // Если iframe не загрузился через 5 секунд — показываем заглушку
-        setTimeout(() => {
-            const iframe = document.querySelector('.github-section .wrapper iframe');
-            const fallback = document.querySelector('.github-section .wrapper .fallback');
-            if (iframe && iframe.style.display !== 'none') {
-                try {
-                    // Пытаемся проверить загрузку iframe
-                    if (iframe.contentDocument && iframe.contentDocument.body) {
-                        const text = iframe.contentDocument.body.innerText || '';
-                        if (text.includes('недоступен') || text.includes('доступ') || text.includes('403')) {
-                            iframe.style.display = 'none';
-                            fallback.style.display = 'block';
-                        }
-                    }
-                } catch (e) {
-                    // Если ошибка доступа — значит iframe загрузился нормально
-                    console.log('GitHub iframe загружен');
-                }
-            }
-        }, 5000);
-    </script>
 </body>
 </html>
