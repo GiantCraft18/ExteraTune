@@ -36,57 +36,89 @@
         .links-grid a:hover::before{left:0}
         .links-grid a:hover{background:rgba(255,255,255,.06);color:#fff;border-color:#ff7eb3;transform:translateY(-2px)scale(1.02);box-shadow:0 8px 25px rgba(255,0,150,.05)}
 
-        /* ===== УЛУЧШЕННАЯ РАМКА ПЛЕЕРА ===== */
+        /* ===== СУПЕР-УЛУЧШЕННАЯ РАМКА ПЛЕЕРА ===== */
         .player-wrapper {
             background: rgba(255, 255, 255, 0.02);
-            border-radius: 16px;
-            padding: 6px;
+            border-radius: 20px;
+            padding: 8px;
             margin: 16px 0;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            transition: all 0.4s ease;
+            border: none;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
+            box-shadow: 0 0 30px rgba(255, 100, 200, 0.03);
         }
 
+        /* Неоновая рамка */
         .player-wrapper::before {
             content: '';
             position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            border-radius: 18px;
-            background: linear-gradient(135deg, #ff7eb3, #7a00ff, #ff7eb3);
-            background-size: 300% 300%;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            border-radius: 23px;
+            background: linear-gradient(135deg, #ff7eb3, #7a00ff, #ff007a, #7a00ff, #ff7eb3);
+            background-size: 400% 400%;
             z-index: -1;
-            animation: borderGlow 3s ease-in-out infinite;
-            opacity: 0.3;
-            transition: opacity 0.4s ease;
+            animation: borderGlow 4s ease-in-out infinite;
+            opacity: 0.35;
+            transition: opacity 0.5s ease, filter 0.5s ease;
+            filter: blur(2px);
         }
 
-        .player-wrapper:hover::before {
-            opacity: 0.8;
-        }
-
-        .player-wrapper:hover {
-            border-color: rgba(255, 100, 200, 0.2);
-            box-shadow: 0 0 40px rgba(255, 100, 200, 0.05), inset 0 0 30px rgba(255, 100, 200, 0.02);
-            transform: translateY(-2px);
+        /* Вторая рамка для усиления свечения */
+        .player-wrapper::after {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: -6px;
+            right: -6px;
+            bottom: -6px;
+            border-radius: 26px;
+            background: linear-gradient(135deg, rgba(255, 100, 200, 0.1), rgba(122, 0, 255, 0.1));
+            z-index: -2;
+            animation: glowPulse 3s ease-in-out infinite;
+            filter: blur(15px);
         }
 
         @keyframes borderGlow {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            0% { background-position: 0% 50%; opacity: 0.35; }
+            25% { background-position: 100% 50%; opacity: 0.5; }
+            50% { background-position: 100% 100%; opacity: 0.6; }
+            75% { background-position: 0% 100%; opacity: 0.5; }
+            100% { background-position: 0% 50%; opacity: 0.35; }
+        }
+
+        @keyframes glowPulse {
+            0% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.02); }
+            100% { opacity: 0.3; transform: scale(1); }
+        }
+
+        .player-wrapper:hover::before {
+            opacity: 0.9;
+            filter: blur(4px);
+        }
+
+        .player-wrapper:hover {
+            transform: translateY(-3px) scale(1.005);
+            box-shadow: 0 0 60px rgba(255, 100, 200, 0.08), 0 0 120px rgba(255, 100, 200, 0.03);
+        }
+
+        .player-wrapper:active {
+            transform: translateY(0) scale(0.995);
         }
 
         .player-wrapper iframe {
             width: 100%;
-            border-radius: 12px;
+            border-radius: 14px;
             border: none;
             height: 400px;
             display: block;
             position: relative;
             z-index: 1;
+            background: #0a0a12;
+            box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.5);
         }
 
         .player-container {
@@ -94,33 +126,49 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 12px;
+            border-radius: 14px;
             overflow: hidden;
+            position: relative;
+            z-index: 1;
         }
 
         .player-container .placeholder {
             color: #555577;
             font-size: 13px;
             text-align: center;
-            padding: 30px 20px;
+            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 14px;
+            width: 100%;
         }
 
         .player-container .placeholder .icon {
-            font-size: 28px;
+            font-size: 36px;
             display: block;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
+            animation: pulseIcon 2s ease-in-out infinite;
+        }
+
+        @keyframes pulseIcon {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.05); }
         }
 
         .player-container .placeholder a {
             color: #ff7eb3;
             text-decoration: underline;
+            transition: 0.3s;
+        }
+
+        .player-container .placeholder a:hover {
+            color: #ff4d7a;
         }
 
         .footer-tag{text-align:center;color:#333355;font-size:13px;margin-top:20px;letter-spacing:1px;transition:.3s}
         .footer-tag:hover{color:#8888aa}
         .footer-tag span{color:#444466;opacity:.6;transition:.3s}
         .footer-tag:hover span{opacity:1;text-shadow:0 0 30px rgba(255,0,150,.1)}
-        @media(max-width:500px){.container{padding:20px 15px}.nav-bar a{font-size:11px;padding:4px 10px}.links-grid{grid-template-columns:repeat(auto-fit,minmax(80px,1fr))}.links-grid a{font-size:11px;padding:8px 4px}.avatar{width:90px;height:90px}.username{font-size:20px}.player-wrapper iframe{height:280px}}
+        @media(max-width:500px){.container{padding:20px 15px}.nav-bar a{font-size:11px;padding:4px 10px}.links-grid{grid-template-columns:repeat(auto-fit,minmax(80px,1fr))}.links-grid a{font-size:11px;padding:8px 4px}.avatar{width:90px;height:90px}.username{font-size:20px}.player-wrapper iframe{height:280px}.player-wrapper::before{border-radius:18px}.player-wrapper::after{border-radius:20px}}
         @media(max-width:380px){.container{padding:15px 10px}.username{font-size:17px}.links-grid a{font-size:10px;padding:6px 3px}.avatar{width:70px;height:70px}.player-wrapper iframe{height:200px}}
     </style>
 </head>
@@ -151,7 +199,6 @@
         <a href="https://discord.gg/ваш_сервер" target="_blank">💬 Discord</a>
         <a href="https://github.com/giantcraft18" target="_blank">🐙 GitHub</a>
         <a href="https://tiktok.com/@ваш_ник" target="_blank">🎵 TikTok</a>
-        <a href="https://matrix.to/#/@ваш_ник:matrix.org" target="_blank">🔗 Matrix</a>
         <a href="https://steamcommunity.com/id/Delovoy_Cat" target="_blank">🎮 Steam</a>
     </div>
 
@@ -163,7 +210,7 @@
                     height="400" 
                     frameborder="0" 
                     allowfullscreen 
-                    style="border-radius:12px;height:400px;">
+                    style="border-radius:14px;height:400px;">
             </iframe>
         </div>
     </div>
