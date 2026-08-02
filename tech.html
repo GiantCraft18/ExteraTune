@@ -24,6 +24,8 @@
         .nav-bar a.blog-link{color:#ff7eb3;border:1px solid rgba(255,100,200,.1)}
         .nav-bar a.blog-link:hover{background:rgba(255,100,200,.12);border-color:rgba(255,100,200,.3)}
         .username{text-align:center;font-size:24px;font-weight:700;background:linear-gradient(135deg,#ff7eb3,#7a00ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:inline-block;width:100%}
+        
+        /* ===== УЛУЧШЕННЫЙ ТЕХ-ГРИД ===== */
         .tech-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:16px 0}
         .tech-tag{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);padding:6px 16px;border-radius:30px;font-size:13px;color:#b0b0c8;transition:.3s;letter-spacing:.3px;cursor:default;position:relative;overflow:hidden}
         .tech-tag::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(135deg,#ff7eb3,#7a00ff);opacity:0;transition:opacity .3s}
@@ -31,13 +33,31 @@
         .tech-tag:hover{background:rgba(255,100,200,.08);border-color:#ff7eb3;color:#fff;transform:translateY(-2px)scale(1.02);box-shadow:0 4px 20px rgba(255,0,150,.05)}
         .tech-tag.ide{background:rgba(255,100,200,.06);border-color:rgba(255,100,200,.12);color:#ff7eb3}
         .tech-tag.ide:hover{background:rgba(255,100,200,.12);border-color:rgba(255,100,200,.25)}
+        
+        /* ===== НОВЫЕ СТИЛИ ДЛЯ ТЕХНОЛОГИЙ ===== */
+        .tech-section{background:rgba(255,255,255,.02);border-radius:16px;padding:16px;border:1px solid rgba(255,255,255,.05);margin:12px 0;transition:.3s}
+        .tech-section:hover{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08)}
+        .tech-section .label{color:#fff;font-size:14px;font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+        .tech-section .label .count{font-size:11px;color:#555577;font-weight:400}
         .section-label{font-weight:700;color:#c0c0d0;margin:6px 0 4px;font-size:13px;text-align:center;letter-spacing:.5px;width:100%}
         .ide-desc{font-size:11px;color:#555577;text-align:center;margin-top:4px;width:100%;line-height:1.6}
+        
+        /* ===== ПРОГРЕСС-БАРЫ ===== */
+        .skill-bar{margin:8px 0}
+        .skill-bar .info{display:flex;justify-content:space-between;font-size:12px;color:#8888aa;margin-bottom:2px}
+        .skill-bar .bar{background:rgba(255,255,255,.06);border-radius:10px;height:6px;overflow:hidden}
+        .skill-bar .bar .fill{height:6px;border-radius:10px;background:linear-gradient(135deg,#ff7eb3,#7a00ff);transition:width 1.5s ease}
+        
+        /* ===== БЕЙДЖ "СЕЙЧАС ИЗУЧАЮ" ===== */
+        .studying-badge{display:inline-block;background:rgba(255,200,0,.1);border:1px solid rgba(255,200,0,.2);padding:4px 16px;border-radius:30px;font-size:12px;color:#ffcc00;animation:pulse 2s ease-in-out infinite}
+        @keyframes pulse{0%,100%{opacity:0.6}50%{opacity:1}}
+        
         .footer-tag{text-align:center;color:#333355;font-size:13px;margin-top:20px;letter-spacing:1px;transition:.3s}
         .footer-tag:hover{color:#8888aa}
         .footer-tag span{color:#444466;opacity:.6;transition:.3s}
         .footer-tag:hover span{opacity:1;text-shadow:0 0 30px rgba(255,0,150,.1)}
-        @media(max-width:500px){.container{padding:20px 15px}.nav-bar a{font-size:11px;padding:4px 10px}.tech-tag{font-size:11px;padding:4px 10px}.username{font-size:20px}}
+        
+        @media(max-width:500px){.container{padding:20px 15px}.nav-bar a{font-size:11px;padding:4px 10px}.username{font-size:20px}.tech-tag{font-size:11px;padding:4px 10px}.tech-section{padding:12px}}
         @media(max-width:380px){.container{padding:15px 10px}.username{font-size:17px}.tech-tag{font-size:10px;padding:3px 8px}}
     </style>
 </head>
@@ -48,9 +68,9 @@
     <div class="nav-bar">
         <a href="index.html">🏠 Главная</a>
         <a href="about.html">👤 Обо мне</a>
+        <a href="blog.html" class="blog-link">📝 Блог</a>
         <a href="tech.html" class="active">⚡ Тех Стек</a>
         <a href="projects.html">📦 Проекты</a>
-        <a href="blog.html" class="blog-link">📝 Блог</a>
     </div>
 
     <div class="divider"></div>
@@ -59,63 +79,135 @@
 
     <div class="divider"></div>
 
+    <!-- ===== БЕЙДЖ "СЕЙЧАС ИЗУЧАЮ" ===== -->
+    <div style="text-align:center;margin:8px 0 16px;">
+        <span class="studying-badge">🔥 Сейчас изучаю: TypeScript</span>
+    </div>
+
+    <!-- ===== ПРОГРЕСС-БАРЫ НАВЫКОВ ===== -->
+    <div class="tech-section">
+        <div class="label">📊 Уровень навыков</div>
+        <div class="skill-bar">
+            <div class="info"><span>🐍 Python</span><span>85%</span></div>
+            <div class="bar"><div class="fill" style="width:85%;"></div></div>
+        </div>
+        <div class="skill-bar">
+            <div class="info"><span>📄 HTML/CSS</span><span>90%</span></div>
+            <div class="bar"><div class="fill" style="width:90%;"></div></div>
+        </div>
+        <div class="skill-bar">
+            <div class="info"><span>⚡ JavaScript</span><span>75%</span></div>
+            <div class="bar"><div class="fill" style="width:75%;"></div></div>
+        </div>
+        <div class="skill-bar">
+            <div class="info"><span>🐳 Docker</span><span>70%</span></div>
+            <div class="bar"><div class="fill" style="width:70%;"></div></div>
+        </div>
+        <div class="skill-bar">
+            <div class="info"><span>🗄️ SQL</span><span>65%</span></div>
+            <div class="bar"><div class="fill" style="width:65%;"></div></div>
+        </div>
+    </div>
+
     <!-- ===== ЯЗЫКИ ===== -->
-    <div class="section-label">💻 Языки</div>
-    <div class="tech-grid">
-        <span class="tech-tag">Python</span>
-        <span class="tech-tag">JavaScript</span>
-        <span class="tech-tag">TypeScript</span>
-        <span class="tech-tag">Bash</span>
-        <span class="tech-tag">SQL</span>
+    <div class="tech-section">
+        <div class="label">💻 Языки <span class="count">(5)</span></div>
+        <div class="tech-grid">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">JavaScript</span>
+            <span class="tech-tag">TypeScript</span>
+            <span class="tech-tag">Bash</span>
+            <span class="tech-tag">SQL</span>
+        </div>
     </div>
 
     <!-- ===== ФРЕЙМВОРКИ ===== -->
-    <div class="section-label">⚡ Фреймворки</div>
-    <div class="tech-grid">
-        <span class="tech-tag">Flask</span>
-        <span class="tech-tag">FastAPI</span>
-        <span class="tech-tag">Vue.js</span>
-        <span class="tech-tag">React</span>
-        <span class="tech-tag">Bootstrap</span>
+    <div class="tech-section">
+        <div class="label">⚡ Фреймворки <span class="count">(5)</span></div>
+        <div class="tech-grid">
+            <span class="tech-tag">Flask</span>
+            <span class="tech-tag">FastAPI</span>
+            <span class="tech-tag">Vue.js</span>
+            <span class="tech-tag">React</span>
+            <span class="tech-tag">Bootstrap</span>
+        </div>
     </div>
 
     <!-- ===== БАЗЫ ДАННЫХ ===== -->
-    <div class="section-label">🗄️ Базы данных</div>
-    <div class="tech-grid">
-        <span class="tech-tag">PostgreSQL</span>
-        <span class="tech-tag">Redis</span>
+    <div class="tech-section">
+        <div class="label">🗄️ Базы данных <span class="count">(2)</span></div>
+        <div class="tech-grid">
+            <span class="tech-tag">PostgreSQL</span>
+            <span class="tech-tag">Redis</span>
+        </div>
     </div>
 
     <!-- ===== DEVOPS ===== -->
-    <div class="section-label">🐳 DevOps</div>
-    <div class="tech-grid">
-        <span class="tech-tag">Docker</span>
-        <span class="tech-tag">GitHub Actions</span>
-        <span class="tech-tag">Nginx</span>
-        <span class="tech-tag">Linux</span>
+    <div class="tech-section">
+        <div class="label">🐳 DevOps <span class="count">(4)</span></div>
+        <div class="tech-grid">
+            <span class="tech-tag">Docker</span>
+            <span class="tech-tag">GitHub Actions</span>
+            <span class="tech-tag">Nginx</span>
+            <span class="tech-tag">Linux</span>
+        </div>
     </div>
 
     <!-- ===== ИНСТРУМЕНТЫ ===== -->
-    <div class="section-label">🛠️ Инструменты</div>
-    <div class="tech-grid">
-        <span class="tech-tag">Git</span>
-        <span class="tech-tag">Postman</span>
-        <span class="tech-tag">HTML</span>
-        <span class="tech-tag">CSS</span>
+    <div class="tech-section">
+        <div class="label">🛠️ Инструменты <span class="count">(4)</span></div>
+        <div class="tech-grid">
+            <span class="tech-tag">Git</span>
+            <span class="tech-tag">Postman</span>
+            <span class="tech-tag">HTML</span>
+            <span class="tech-tag">CSS</span>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- ===== В ПЛАНАХ ===== -->
+    <div class="tech-section" style="border-color:rgba(255,200,0,.1);background:rgba(255,200,0,.02);">
+        <div class="label">🎯 В планах <span class="count">(4)</span></div>
+        <div class="tech-grid">
+            <span class="tech-tag" style="border-color:rgba(255,200,0,.2);color:#ffcc00;">Go</span>
+            <span class="tech-tag" style="border-color:rgba(255,200,0,.2);color:#ffcc00;">Kubernetes</span>
+            <span class="tech-tag" style="border-color:rgba(255,200,0,.2);color:#ffcc00;">Rust</span>
+            <span class="tech-tag" style="border-color:rgba(255,200,0,.2);color:#ffcc00;">AWS</span>
+        </div>
+        <div style="text-align:center;font-size:11px;color:#555577;margin-top:6px;">⬆️ Технологии, которые я хочу освоить</div>
     </div>
 
     <div class="divider"></div>
 
     <!-- ===== СРЕДЫ РАЗРАБОТКИ ===== -->
-    <div class="section-label">🧑‍💻 Среды разработки</div>
-    <div class="tech-grid">
-        <span class="tech-tag ide">Android Studio</span>
-        <span class="tech-tag ide">Visual Studio Code</span>
-        <span class="tech-tag ide">IntelliJ IDEA</span>
+    <div class="tech-section">
+        <div class="label">🧑‍💻 Среды разработки <span class="count">(3)</span></div>
+        <div class="tech-grid">
+            <span class="tech-tag ide">Android Studio</span>
+            <span class="tech-tag ide">Visual Studio Code</span>
+            <span class="tech-tag ide">IntelliJ IDEA</span>
+        </div>
+        <div class="ide-desc">
+            💻 IntelliJ IDEA — Java-разработка<br>
+            📱 Android Studio — Java/Kotlin разработка приложений
+        </div>
     </div>
-    <div class="ide-desc">
-        💻 IntelliJ IDEA — Java-разработка<br>
-        📱 Android Studio — Java/Kotlin разработка приложений
+
+    <!-- ===== СЧЁТЧИК ТЕХНОЛОГИЙ ===== -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0;">
+        <div style="background:rgba(255,255,255,.02);border-radius:12px;padding:12px;text-align:center;border:1px solid rgba(255,255,255,.05);">
+            <div style="font-size:28px;font-weight:700;color:#ff7eb3;">20</div>
+            <div style="font-size:11px;color:#555577;">⚡ Технологий</div>
+        </div>
+        <div style="background:rgba(255,255,255,.02);border-radius:12px;padding:12px;text-align:center;border:1px solid rgba(255,255,255,.05);">
+            <div style="font-size:28px;font-weight:700;color:#ff7eb3;">5</div>
+            <div style="font-size:11px;color:#555577;">📚 Категорий</div>
+        </div>
+        <div style="background:rgba(255,255,255,.02);border-radius:12px;padding:12px;text-align:center;border:1px solid rgba(255,255,255,.05);">
+            <div style="font-size:28px;font-weight:700;color:#ffc107;">4</div>
+            <div style="font-size:11px;color:#555577;">🎯 В планах</div>
+        </div>
     </div>
 
     <div class="footer-tag">&gt; <span>ExteraTune</span> &lt;</div>
