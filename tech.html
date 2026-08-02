@@ -2,16 +2,36 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Тех Стек | ТВОЙ_НИК</title>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{background:#0a0a12;color:#c8c8e8;font-family:'JetBrains Mono',monospace;display:flex;justify-content:center;align-items:center;min-height:100vh;padding:20px}
+        .container{max-width:600px;width:100%;background:rgba(255,255,255,.02);border-radius:28px;padding:30px 25px 25px;border:1px solid rgba(255,255,255,.04);backdrop-filter:blur(10px);box-shadow:0 20px 60px rgba(0,0,0,.6)}
+        .divider{height:1px;background:linear-gradient(to right,transparent,rgba(255,255,255,.06),transparent);margin:16px 0}
+        .username{text-align:center;font-size:24px;font-weight:700;color:#fff;letter-spacing:.5px}
+        .back-link{color:#555577;text-decoration:none;font-size:14px;display:block;text-align:left;margin-bottom:8px;transition:.2s}
+        .back-link:hover{color:#ff7eb3}
+        .tech-grid{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;padding:8px 0}
+        .tech-tag{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);padding:6px 14px;border-radius:30px;font-size:13px;color:#8888aa;transition:.2s}
+        .tech-tag:hover{background:rgba(255,255,255,.08);color:#fff;border-color:rgba(255,255,255,.12)}
+        .github-section{text-align:left;font-size:14px;color:#8888aa;margin:10px 0}
+        .github-section .label{font-weight:700;color:#c0c0d0;margin-bottom:6px}
+        .github-section .wrapper{background:rgba(255,255,255,.03);border-radius:12px;padding:16px;border:1px solid rgba(255,255,255,.05);text-align:center}
+        .github-section .wrapper img{width:100%;max-width:700px;border-radius:8px;background:#0d1117;padding:10px;display:block;margin:0 auto}
+        .github-section .wrapper .error{color:#555577;font-size:13px;padding:20px 0}
+        .footer-tag{text-align:center;color:#333355;font-size:13px;margin-top:20px;letter-spacing:1px}
+        .footer-tag span{color:#444466}
+        @media(max-width:768px){body{padding:10px;align-items:flex-start;padding-top:20px}.container{padding:20px 15px;border-radius:20px}.tech-tag{font-size:11px;padding:4px 10px}.github-section .wrapper{padding:10px}.github-section .wrapper img{padding:6px}.username{font-size:20px}}
+        @media(max-width:400px){.container{padding:15px 10px;border-radius:16px}.tech-tag{font-size:10px;padding:3px 8px}.username{font-size:17px}}
+    </style>
 </head>
 <body>
     <div class="container">
-        <a href="index.html" style="color: #555577; text-decoration: none; font-size: 14px; display: block; text-align: left; margin-bottom: 8px;">← Назад</a>
+        <a href="index.html" class="back-link">← Назад</a>
         
-        <div class="username" style="font-size: 22px;">&gt; Мои Тех. Стек &lt;</div>
+        <div class="username">&gt; Мои Тех. Стек &lt;</div>
         <div class="divider"></div>
 
         <div class="tech-grid">
@@ -33,14 +53,21 @@
 
         <div class="divider"></div>
 
-        <div style="text-align: left; font-size: 14px; color: #8888aa;">
-            <div style="font-weight: 700; color: #c0c0d0; margin-bottom: 6px;">&gt; GitHub Contributions &lt;</div>
-            <div style="background: rgba(255,255,255,0.03); border-radius: 12px; padding: 20px; border: 1px solid rgba(255,255,255,0.05); text-align: center; color: #555577;">
-                📊 Твоя гистограмма вкладов
+        <!-- ===== GITHUB CONTRIBUTIONS ===== -->
+        <div class="github-section">
+            <div class="label">&gt; GitHub Contributions &lt;</div>
+            <div class="wrapper">
+                <img src="https://ghchart.rshah.org/giantcraft18" 
+                     alt="GitHub Contributions" 
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                <div class="error" style="display:none;">
+                    📊 Шкала временно недоступна<br>
+                    <a href="https://github.com/giantcraft18" target="_blank" style="color:#ff7eb3;text-decoration:underline;margin-top:6px;display:inline-block;">Открыть профиль →</a>
+                </div>
             </div>
         </div>
 
-        <div class="footer-tag" style="margin-top: 24px;">&gt; <span>Активность Проектов</span> &lt;</div>
+        <div class="footer-tag">&gt; <span>Активность Проектов</span> &lt;</div>
     </div>
 </body>
 </html>
