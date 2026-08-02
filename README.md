@@ -1,58 +1,45 @@
 <div align="center">
-  <img src="https://avatars.mds.yandex.net/i?id=af33e631e93213bdb137b542a3c9cf7d_l-5318046-images-thumbs&n=13" alt="avatar" width="120" style="border-radius:50%;">
   
-  <h1>🎵 ExteraTune</h1>
+# 🎵 ExteraTune
   
-  <p>Мой личный сайт-визитка с плеером Яндекс Музыки</p>
+<img src="https://avatars.mds.yandex.net/i?id=af33e631e93213bdb137b542a3c9cf7d_l-5318046-images-thumbs&n=13" alt="ExteraTune" width="150" style="border-radius:50%;border:3px solid #ff7eb3;box-shadow:0 0 40px rgba(255,100,200,0.3);">
   
-  <a href="https://giantcraft18.github.io" target="_blank">
-    <button style="background:linear-gradient(135deg,#ff7eb3,#7a00ff);border:none;padding:10px 24px;border-radius:30px;color:#fff;font-size:16px;cursor:pointer;">
-      🌐 Открыть сайт
-    </button>
-  </a>
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/giantcraft18/ExteraTune/blob/main/LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/giantcraft18/ExteraTune)](https://github.com/giantcraft18/ExteraTune/stargazers)
+[![Website](https://img.shields.io/website?url=https%3A%2F%2Fgiantcraft18.github.io)](https://giantcraft18.github.io)
+  
+**Мой личный сайт-визитка с плеером Яндекс Музыки**  
+*Полностью адаптивный · Тёмная тема · Анимации*
+  
+[![Open website](https://img.shields.io/badge/🌐_Открыть_сайт-ff7eb3?style=for-the-badge)](https://giantcraft18.github.io)
+[![GitHub](https://img.shields.io/badge/🐙_GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/giantcraft18)
+[![Telegram](https://img.shields.io/badge/📱_Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/ExteraTune)
+
 </div>
 
 ---
 
-## 📄 Страницы
+## 📄 **Страницы**
 
-<table align="center">
-  <tr>
-    <td align="center">🏠 <b>Главная</b></td>
-    <td align="center">👤 <b>Обо мне</b></td>
-    <td align="center">⚡ <b>Тех Стек</b></td>
-  </tr>
-  <tr>
-    <td align="center">📦 <b>Проекты</b></td>
-    <td align="center">📝 <b>Блог</b></td>
-    <td align="center"></td>
-  </tr>
-</table>
+| Страница | Описание |
+|----------|----------|
+| 🏠 **Главная** | Аватар, соцсети, плеер Яндекс Музыки |
+| 👤 **Обо мне** | Информация, образование, цели |
+| ⚡ **Тех Стек** | Языки, фреймворки, инструменты, IDE |
+| 📦 **Проекты** | Проекты с фильтром по категориям |
+| 📝 **Блог** | Записи, теги, подписка |
 
 ---
 
-## 🛠️ Технологии
+## 📁 **Структура проекта**
 
-<div align="center">
-  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white">
-  <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white">
-  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
-  <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white">
-</div>
-
----
-
-## 📱 Социальные сети
-
-<div align="center">
-  <a href="https://t.me/ExteraTune">
-    <img src="https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white">
-  </a>
-  <a href="https://github.com/giantcraft18">
-    <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white">
-  </a>
-</div>
-
----
-
-⭐ **Если вам понравился проект, поставьте звезду на GitHub!** ⭐
+```bash
+ExteraTune/
+├── index.html          # 🏠 Главная страница
+├── about.html          # 👤 Обо мне
+├── tech.html           # ⚡ Технологии
+├── projects.html       # 📦 Проекты
+├── blog.html           # 📝 Блог
+├── style.css           # 🎨 Стили
+├── README.md           # 📖 Описание проекта
+└── LICENSE             # 📜 Лицензия MIT
