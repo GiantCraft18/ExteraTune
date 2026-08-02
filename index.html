@@ -1,80 +1,63 @@
 <!DOCTYPE html>
-<html lang="ru" data-theme="dark">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>ExteraTune | Сайт</title>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        :root{--bg:#0a0a12;--bg2:rgba(255,255,255,.02);--text:#c8c8e8;--text2:#8888aa;--text3:#555577;--border:rgba(255,255,255,.06);--border2:rgba(255,255,255,.04);--shadow:rgba(0,0,0,.6);--glow:rgba(255,100,200,.05);--tag:rgba(255,255,255,.04);--hover:rgba(255,255,255,.06);--accent:#ff7eb3;--accent2:rgba(255,100,200,.08);--divider:rgba(255,255,255,.06);--footer:#333355;--footer2:#444466;--toggle:rgba(255,255,255,.04)}
-        [data-theme="light"]{--bg:#f0f0f5;--bg2:rgba(255,255,255,.85);--text:#1a1a2e;--text2:#666688;--text3:#9999bb;--border:rgba(0,0,0,.06);--border2:rgba(0,0,0,.04);--shadow:rgba(0,0,0,.1);--glow:rgba(255,100,200,.08);--tag:rgba(0,0,0,.03);--hover:rgba(0,0,0,.04);--accent:#ff4d7a;--accent2:rgba(255,100,200,.06);--divider:rgba(0,0,0,.08);--footer:#9999bb;--footer2:#aaaacc;--toggle:rgba(0,0,0,.04)}
         *{margin:0;padding:0;box-sizing:border-box}
-        body{background:var(--bg);color:var(--text);font-family:'JetBrains Mono',monospace;display:flex;justify-content:center;align-items:center;min-height:100vh;padding:20px;background-image:radial-gradient(circle at 20% 30%,rgba(255,0,150,.08)0%,transparent 50%),radial-gradient(circle at 80% 70%,rgba(100,0,255,.06)0%,transparent 50%);transition:background .5s,color .5s}
-        [data-theme="light"] body{background-image:radial-gradient(circle at 20% 30%,rgba(255,100,200,.06)0%,transparent 50%),radial-gradient(circle at 80% 70%,rgba(150,100,255,.04)0%,transparent 50%)}
+        body{background:#0a0a12;color:#c8c8e8;font-family:'JetBrains Mono',monospace;display:flex;justify-content:center;align-items:center;min-height:100vh;padding:20px;background-image:radial-gradient(circle at 20% 30%,rgba(255,0,150,.08)0%,transparent 50%),radial-gradient(circle at 80% 70%,rgba(100,0,255,.06)0%,transparent 50%);transition:background .5s,color .5s}
         body::before,body::after{content:'';position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(60px);opacity:.3;animation:float 12s ease-in-out infinite alternate;transition:opacity .5s}
-        [data-theme="light"] body::before,[data-theme="light"] body::after{opacity:.08}
         body::before{width:300px;height:300px;background:#ff007a;top:-100px;left:-100px}
         body::after{width:400px;height:400px;background:#7a00ff;bottom:-150px;right:-150px;animation-delay:4s}
         @keyframes float{0%{transform:translate(0,0)scale(1);opacity:.2}50%{transform:translate(50px,30px)scale(1.2);opacity:.4}100%{transform:translate(-30px,-20px)scale(.8);opacity:.2}}
-        .container{max-width:600px;width:100%;background:var(--bg2);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid var(--border);border-radius:28px;padding:30px 25px 25px;box-shadow:0 20px 60px var(--shadow),inset 0 1px 0 rgba(255,255,255,.04);position:relative;z-index:1;animation:in .8s cubic-bezier(.16,1,.3,1);transition:all .4s}
-        .container:hover{border-color:var(--border2);box-shadow:0 30px 60px -12px var(--shadow),0 0 80px var(--glow)}
+        .container{max-width:600px;width:100%;background:rgba(18,18,28,.75);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.06);border-radius:28px;padding:30px 25px 25px;box-shadow:0 20px 60px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.04);position:relative;z-index:1;animation:in .8s cubic-bezier(.16,1,.3,1);transition:all .4s}
+        .container:hover{border-color:rgba(255,255,255,.08);box-shadow:0 30px 60px -12px rgba(0,0,0,.8),0 0 80px rgba(255,0,150,.05)}
         @keyframes in{0%{opacity:0;transform:translateY(30px)scale(.96)}100%{opacity:1;transform:translateY(0)scale(1)}}
-        .theme-toggle{display:flex;justify-content:flex-end;margin-bottom:12px}
-        .theme-toggle button{background:var(--toggle);border:1px solid var(--border);border-radius:30px;padding:6px 16px;display:flex;align-items:center;gap:8px;cursor:pointer;transition:.3s;color:var(--text2);font-family:inherit;font-size:12px;user-select:none}
-        .theme-toggle button:hover{border-color:var(--accent);background:var(--hover);transform:scale(1.03)}
-        .theme-toggle button .icon{font-size:16px;transition:transform .4s}
-        .theme-toggle button:hover .icon{transform:rotate(30deg)}
-        .divider{height:1px;background:linear-gradient(to right,transparent,var(--divider),transparent);margin:16px 0;position:relative;overflow:hidden}
-        .divider::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(to right,transparent,var(--accent),transparent);opacity:.3;animation:shimmer 3s infinite}
+        .divider{height:1px;background:linear-gradient(to right,transparent,rgba(255,255,255,.08),transparent);margin:16px 0;position:relative;overflow:hidden}
+        .divider::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(to right,transparent,#ff7eb3,transparent);opacity:.3;animation:shimmer 3s infinite}
         @keyframes shimmer{0%{left:-100%}100%{left:100%}}
-        .nav-bar{display:flex;justify-content:center;gap:6px;flex-wrap:wrap;margin-bottom:20px;padding:6px;background:var(--tag);border-radius:16px;border:1px solid var(--border)}
-        .nav-bar a{color:var(--text2);text-decoration:none;font-size:13px;padding:6px 14px;border-radius:30px;transition:.2s;font-weight:500;letter-spacing:.3px}
-        .nav-bar a:hover{color:var(--text);background:var(--hover)}
-        .nav-bar a.active{color:var(--accent);background:var(--accent2);border:1px solid var(--border2)}
-        .nav-bar a.blog-link{color:var(--accent);border:1px solid var(--border2)}
+        .nav-bar{display:flex;justify-content:center;gap:6px;flex-wrap:wrap;margin-bottom:20px;padding:6px;background:rgba(255,255,255,.02);border-radius:16px;border:1px solid rgba(255,255,255,.06)}
+        .nav-bar a{color:#8888aa;text-decoration:none;font-size:13px;padding:6px 14px;border-radius:30px;transition:.2s;font-weight:500;letter-spacing:.3px}
+        .nav-bar a:hover{color:#fff;background:rgba(255,255,255,.06)}
+        .nav-bar a.active{color:#ff7eb3;background:rgba(255,100,200,.08);border:1px solid rgba(255,100,200,.15)}
+        .nav-bar a.blog-link{color:#ff7eb3;border:1px solid rgba(255,100,200,.1)}
         .nav-bar a.blog-link:hover{background:rgba(255,100,200,.12);border-color:rgba(255,100,200,.3)}
-        .avatar{width:120px;height:120px;border-radius:50%;margin:0 auto 16px;overflow:hidden;border:2px solid var(--border);box-shadow:0 0 40px var(--glow);transition:.3s;background:linear-gradient(135deg,#ff00a0,#7a00ff);padding:3px}
-        .avatar img{width:100%;height:100%;border-radius:50%;object-fit:cover;border:2px solid var(--bg);transition:transform .4s}
+        .avatar{width:120px;height:120px;border-radius:50%;margin:0 auto 16px;overflow:hidden;border:2px solid rgba(255,255,255,.08);box-shadow:0 0 40px rgba(255,100,200,.05);transition:.3s;background:linear-gradient(135deg,#ff00a0,#7a00ff);padding:3px}
+        .avatar img{width:100%;height:100%;border-radius:50%;object-fit:cover;border:2px solid #0a0a12;transition:transform .4s}
         .avatar:hover img{transform:scale(1.05)}
-        .username{text-align:center;font-size:24px;font-weight:700;background:linear-gradient(135deg,var(--accent),#7a00ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:inline-block;width:100%}
-        .sub{text-align:center;color:var(--text2);font-size:14px;margin-top:4px}
-        .sub span{background:var(--tag);padding:2px 12px;border-radius:20px;border:1px solid var(--border);display:inline-block;transition:.3s}
-        .sub span:hover{border-color:var(--accent);background:var(--hover)}
+        .username{text-align:center;font-size:24px;font-weight:700;background:linear-gradient(135deg,#ff7eb3,#7a00ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:inline-block;width:100%}
+        .sub{text-align:center;color:#8888aa;font-size:14px;margin-top:4px}
+        .sub span{background:rgba(255,255,255,.04);padding:2px 12px;border-radius:20px;border:1px solid rgba(255,255,255,.06);display:inline-block;transition:.3s}
+        .sub span:hover{border-color:#ff7eb3;background:rgba(255,255,255,.06)}
         .links-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:8px;margin:16px 0}
-        .links-grid a{background:var(--tag);border:1px solid var(--border);padding:10px 8px;border-radius:12px;text-align:center;color:var(--text2);text-decoration:none;font-size:13px;transition:.3s;position:relative;overflow:hidden}
-        .links-grid a::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(135deg,var(--accent),#7a00ff);opacity:.06;transition:left .5s}
+        .links-grid a{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05);padding:10px 8px;border-radius:12px;text-align:center;color:#9999bb;text-decoration:none;font-size:13px;transition:.3s;position:relative;overflow:hidden}
+        .links-grid a::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(135deg,#ff7eb3,#7a00ff);opacity:.06;transition:left .5s}
         .links-grid a:hover::before{left:0}
-        .links-grid a:hover{background:var(--hover);color:var(--text);border-color:var(--accent);transform:translateY(-2px)scale(1.02);box-shadow:0 8px 25px var(--glow)}
+        .links-grid a:hover{background:rgba(255,255,255,.06);color:#fff;border-color:#ff7eb3;transform:translateY(-2px)scale(1.02);box-shadow:0 8px 25px rgba(255,0,150,.05)}
         .links-grid a:active{transform:scale(.95)}
-        .player-wrapper{background:var(--tag);border-radius:16px;padding:16px 15px;margin:16px 0;border:1px solid var(--border)}
+        .player-wrapper{background:rgba(255,255,255,.02);border-radius:16px;padding:16px 15px;margin:16px 0;border:1px solid rgba(255,255,255,.06)}
         .player-wrapper iframe{width:100%;border-radius:12px;border:none}
-        .player-wrapper audio{width:100%;border-radius:12px;background:var(--tag)}
+        .player-wrapper audio{width:100%;border-radius:12px;background:rgba(255,255,255,.05)}
         .player-selector{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:12px}
-        .player-selector button{background:var(--tag);border:1px solid var(--border);padding:6px 14px;border-radius:30px;color:var(--text2);font-family:inherit;font-size:12px;cursor:pointer;transition:.3s}
-        .player-selector button:hover{background:var(--hover);color:var(--text)}
-        .player-selector button.active{background:var(--accent2);border-color:var(--accent);color:var(--accent)}
+        .player-selector button{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);padding:6px 14px;border-radius:30px;color:#8888aa;font-family:inherit;font-size:12px;cursor:pointer;transition:.3s}
+        .player-selector button:hover{background:rgba(255,255,255,.08);color:#fff}
+        .player-selector button.active{background:rgba(255,100,200,.08);border-color:#ff7eb3;color:#ff7eb3}
         .player-container{min-height:80px;display:flex;align-items:center;justify-content:center}
-        .player-container .placeholder{color:var(--text3);font-size:13px;text-align:center}
+        .player-container .placeholder{color:#555577;font-size:13px;text-align:center}
         .player-container .placeholder .icon{font-size:28px;display:block;margin-bottom:6px}
-        .player-container .placeholder a{color:var(--accent);text-decoration:underline}
-        .footer-tag{text-align:center;color:var(--footer);font-size:13px;margin-top:20px;letter-spacing:1px;transition:.3s}
-        .footer-tag:hover{color:var(--text2)}
-        .footer-tag span{color:var(--footer2);opacity:.6;transition:.3s}
-        .footer-tag:hover span{opacity:1;text-shadow:0 0 30px var(--glow)}
+        .player-container .placeholder a{color:#ff7eb3;text-decoration:underline}
+        .footer-tag{text-align:center;color:#333355;font-size:13px;margin-top:20px;letter-spacing:1px;transition:.3s}
+        .footer-tag:hover{color:#8888aa}
+        .footer-tag span{color:#444466;opacity:.6;transition:.3s}
+        .footer-tag:hover span{opacity:1;text-shadow:0 0 30px rgba(255,0,150,.1)}
         @media(max-width:500px){.container{padding:20px 15px}.nav-bar a{font-size:11px;padding:4px 10px}.links-grid{grid-template-columns:repeat(auto-fit,minmax(80px,1fr))}.links-grid a{font-size:11px;padding:8px 4px}.player-selector button{font-size:10px;padding:4px 10px}.avatar{width:90px;height:90px}.username{font-size:20px}}
         @media(max-width:380px){.container{padding:15px 10px}.username{font-size:17px}.links-grid a{font-size:10px;padding:6px 3px}.avatar{width:70px;height:70px}}
     </style>
 </head>
 <body>
 <div class="container">
-
-    <!-- ===== ПЕРЕКЛЮЧАТЕЛЬ ТЕМЫ НАД НАВИГАЦИЕЙ ===== -->
-    <div class="theme-toggle">
-        <button onclick="toggleTheme()" id="themeToggle">
-            <span class="icon" id="themeIcon">🌙</span>
-            <span id="themeLabel">Тёмная</span>
-        </button>
-    </div>
 
     <!-- ===== НАВИГАЦИЯ ===== -->
     <div class="nav-bar">
@@ -124,7 +107,6 @@
 </div>
 
 <script>
-// ===== ПЛЕЕРЫ =====
 const p={youtube:`<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0&rel=0" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen style="height:400px;border-radius:12px;width:100%"></iframe>`,
 soundcloud:`<iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/270577303&color=ff7eb3&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false" style="height:166px;border-radius:12px;width:100%"></iframe>`,
 yandex:`<iframe src="https://music.yandex.ru/iframe/#track/153681603/43077708/" width="100%" height="400" frameborder="0" allowfullscreen style="border-radius:12px"></iframe>`,
@@ -135,11 +117,6 @@ const b=document.querySelectorAll('.player-selector button'),c=document.getEleme
 function l(t){c.innerHTML=p[t]||`<div class="placeholder"><span class="icon">❌</span>Плеер не найден</div>`}
 b.forEach(b=>b.onclick=function(){b.forEach(b=>b.classList.remove('active'));this.classList.add('active');l(this.dataset.player)});
 l('youtube');
-
-// ===== ПЕРЕКЛЮЧЕНИЕ ТЕМЫ =====
-function toggleTheme(){const t=document.documentElement,e=t.getAttribute('data-theme')==='light'?'dark':'light';t.setAttribute('data-theme',e);localStorage.setItem('theme',e);u(e)}
-function u(t){document.getElementById('themeIcon').textContent=t==='light'?'☀️':'🌙';document.getElementById('themeLabel').textContent=t==='light'?'Светлая':'Тёмная'}
-document.addEventListener('DOMContentLoaded',function(){const t=localStorage.getItem('theme')||'dark';document.documentElement.setAttribute('data-theme',t);u(t)});
 </script>
 
 </body>
