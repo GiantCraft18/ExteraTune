@@ -98,5 +98,29 @@
     <div class="footer-tag">&gt; <span>ExteraTune</span> &lt;</div>
 
 </div>
+
+<script>
+    // Проверяем, загрузился ли плеер
+    setTimeout(() => {
+        const iframe = document.querySelector('.player-wrapper iframe');
+        if (iframe) {
+            // Если плеер не загрузился — показываем ссылку
+            iframe.onerror = function() {
+                document.getElementById('p').innerHTML = `
+                    <div class="placeholder">
+                        <span class="icon">🎵</span>
+                        Плеер временно недоступен<br>
+                        <a href="https://music.yandex.ru/playlists/673f934c-4842-03c4-b0c5-4e26a094809e" 
+                           target="_blank" 
+                           style="color: #ff7eb3; text-decoration: underline; margin-top: 6px; display: inline-block;">
+                           Открыть плейлист →
+                        </a>
+                    </div>
+                `;
+            };
+        }
+    }, 5000);
+</script>
+
 </body>
 </html>
