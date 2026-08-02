@@ -2,263 +2,85 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Блог | ТВОЙ_НИК</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Блог | ExteraTune</title>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
     <style>
-        .nav-bar {
-            display: flex;
-            justify-content: center;
-            gap: 6px;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
-            padding: 6px;
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.04);
-        }
-        .nav-bar a {
-            color: #8888aa;
-            text-decoration: none;
-            font-size: 13px;
-            padding: 6px 14px;
-            border-radius: 30px;
-            transition: 0.2s;
-            font-weight: 500;
-            letter-spacing: 0.3px;
-        }
-        .nav-bar a:hover {
-            color: #fff;
-            background: rgba(255, 255, 255, 0.06);
-        }
-        .nav-bar a.active {
-            color: #ff7eb3;
-            background: rgba(255, 100, 200, 0.08);
-            border: 1px solid rgba(255, 100, 200, 0.15);
-        }
-
-        .blog-list {
-            display: block;
-        }
-        .blog-post {
-            text-align: left;
-            padding: 16px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-            cursor: pointer;
-            transition: 0.2s;
-        }
-        .blog-post:hover {
-            background: rgba(255, 255, 255, 0.02);
-            padding-left: 8px;
-            border-radius: 8px;
-        }
-        .blog-post:last-child {
-            border-bottom: none;
-        }
-        .blog-post .date {
-            font-size: 12px;
-            color: #555577;
-        }
-        .blog-post .title {
-            font-size: 18px;
-            font-weight: 700;
-            color: #ff7eb3;
-            margin: 4px 0;
-        }
-        .blog-post .desc {
-            font-size: 14px;
-            color: #9999bb;
-            line-height: 1.5;
-        }
-        .blog-post .tags {
-            display: flex;
-            gap: 8px;
-            margin-top: 8px;
-            flex-wrap: wrap;
-        }
-        .blog-post .tags span {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            padding: 2px 10px;
-            border-radius: 20px;
-            font-size: 11px;
-            color: #7777aa;
-        }
-
-        /* Стили для открытого поста */
-        .post-full {
-            display: none;
-            text-align: left;
-            animation: fadeIn 0.3s ease;
-        }
-        .post-full.active {
-            display: block;
-        }
-        .blog-list.hidden {
-            display: none;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .post-full h2 {
-            color: #ff7eb3;
-            font-size: 20px;
-            margin: 16px 0 8px;
-        }
-        .post-full p {
-            color: #9999bb;
-            line-height: 1.7;
-            margin-bottom: 12px;
-            font-size: 15px;
-        }
-        .post-full code {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 2px 8px;
-            border-radius: 6px;
-            font-size: 13px;
-            color: #ff7eb3;
-        }
-        .post-full .back-btn {
-            color: #7a7aaa;
-            cursor: pointer;
-            font-size: 14px;
-            border-bottom: 1px dashed rgba(255,255,255,0.1);
-            padding-bottom: 4px;
-            transition: 0.2s;
-            display: inline-block;
-            margin-top: 16px;
-        }
-        .post-full .back-btn:hover {
-            color: #ff7eb3;
-            border-color: #ff7eb3;
-        }
-        .post-full .post-date {
-            font-size: 13px;
-            color: #555577;
-            margin-bottom: 12px;
-        }
-        .post-full .post-tags {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-            margin: 12px 0 16px;
-        }
-        .post-full .post-tags span {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            padding: 2px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            color: #7777aa;
-        }
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{background:#0a0a12;color:#c8c8e8;font-family:'JetBrains Mono',monospace;display:flex;justify-content:center;align-items:center;min-height:100vh;padding:20px;background-image:radial-gradient(circle at 20% 30%,rgba(255,0,150,.08)0%,transparent 50%),radial-gradient(circle at 80% 70%,rgba(100,0,255,.06)0%,transparent 50%)}
+        body::before,body::after{content:'';position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(60px);opacity:.3;animation:float 12s ease-in-out infinite alternate}
+        body::before{width:300px;height:300px;background:#ff007a;top:-100px;left:-100px}
+        body::after{width:400px;height:400px;background:#7a00ff;bottom:-150px;right:-150px;animation-delay:4s}
+        @keyframes float{0%{transform:translate(0,0)scale(1);opacity:.2}50%{transform:translate(50px,30px)scale(1.2);opacity:.4}100%{transform:translate(-30px,-20px)scale(.8);opacity:.2}}
+        .container{max-width:600px;width:100%;background:rgba(18,18,28,.75);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.06);border-radius:28px;padding:30px 25px 25px;box-shadow:0 20px 60px rgba(0,0,0,.6);position:relative;z-index:1;animation:in .8s cubic-bezier(.16,1,.3,1)}
+        @keyframes in{0%{opacity:0;transform:translateY(30px)scale(.96)}100%{opacity:1;transform:translateY(0)scale(1)}}
+        .divider{height:1px;background:linear-gradient(to right,transparent,rgba(255,255,255,.08),transparent);margin:16px 0;position:relative;overflow:hidden}
+        .divider::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(to right,transparent,#ff7eb3,transparent);opacity:.3;animation:shimmer 3s infinite}
+        @keyframes shimmer{0%{left:-100%}100%{left:100%}}
+        .nav-bar{display:flex;justify-content:center;gap:6px;flex-wrap:wrap;margin-bottom:20px;padding:6px;background:rgba(255,255,255,.02);border-radius:16px;border:1px solid rgba(255,255,255,.06)}
+        .nav-bar a{color:#8888aa;text-decoration:none;font-size:13px;padding:6px 14px;border-radius:30px;transition:.2s;font-weight:500;letter-spacing:.3px}
+        .nav-bar a:hover{color:#fff;background:rgba(255,255,255,.06)}
+        .nav-bar a.active{color:#ff7eb3;background:rgba(255,100,200,.08);border:1px solid rgba(255,100,200,.15)}
+        .nav-bar a.blog-link{color:#ff7eb3;border:1px solid rgba(255,100,200,.1)}
+        .nav-bar a.blog-link:hover{background:rgba(255,100,200,.12);border-color:rgba(255,100,200,.3)}
+        .username{text-align:center;font-size:24px;font-weight:700;background:linear-gradient(135deg,#ff7eb3,#7a00ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:inline-block;width:100%}
+        .blog-post{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:16px;padding:16px;margin:12px 0;transition:.3s;position:relative;overflow:hidden}
+        .blog-post::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(135deg,#ff7eb3,#7a00ff);opacity:0;transition:opacity .4s}
+        .blog-post:hover::before{opacity:.03}
+        .blog-post:hover{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08);transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,0,0,.3)}
+        .blog-post h3{color:#fff;font-size:16px;margin-bottom:6px;transition:.3s}
+        .blog-post:hover h3{color:#ff7eb3}
+        .blog-post p{color:#8888aa;font-size:13px;line-height:1.6}
+        .blog-post .date{color:#555577;font-size:11px;margin-top:8px;display:block}
+        .footer-tag{text-align:center;color:#333355;font-size:13px;margin-top:20px;letter-spacing:1px;transition:.3s}
+        .footer-tag:hover{color:#8888aa}
+        .footer-tag span{color:#444466;opacity:.6;transition:.3s}
+        .footer-tag:hover span{opacity:1;text-shadow:0 0 30px rgba(255,0,150,.1)}
+        @media(max-width:500px){.container{padding:20px 15px}.nav-bar a{font-size:11px;padding:4px 10px}.username{font-size:20px}.blog-post{padding:12px}.blog-post h3{font-size:14px}.blog-post p{font-size:12px}}
+        @media(max-width:380px){.container{padding:15px 10px}.username{font-size:17px}}
     </style>
 </head>
 <body>
-    <div class="container">
+<div class="container">
 
-        <!-- ===== НАВИГАЦИЯ ===== -->
-        <div class="nav-bar">
-            <a href="index.html">🏠 Главная</a>
-            <a href="tech.html">⚡ Тех Стек</a>
-            <a href="projects.html">📦 Проекты</a>
-            <a href="blog.html" class="active">📝 Блог</a>
-        </div>
-
-        <div class="divider"></div>
-
-        <!-- ===== СПИСОК ПОСТОВ ===== -->
-        <div id="blog-list" class="blog-list">
-            <div class="username" style="font-size: 22px;">📝 Блог</div>
-            <div class="sub" style="font-size:13px;">Заметки, мысли, туториалы</div>
-            <div class="divider"></div>
-
-            <!-- Пост 1 -->
-            <div class="blog-post" onclick="openPost('post1')">
-                <div class="date">02 августа 2026</div>
-                <div class="title">Как я настроил Arch Linux с нуля</div>
-                <div class="desc">Пошаговое руководство по установке и настройке Arch Linux с i3wm и неоновой темой.</div>
-                <div class="tags"><span>Arch</span><span>Linux</span><span>i3</span><span>Rice</span></div>
-            </div>
-
-            <!-- Пост 2 -->
-            <div class="blog-post" onclick="openPost('post2')">
-                <div class="date">28 июля 2026</div>
-                <div class="title">Обновил стек до Vue 3 + Vite</div>
-                <div class="desc">Почему я перешёл с Vue 2 на Vue 3 и как это ускорило разработку.</div>
-                <div class="tags"><span>Vue</span><span>Vite</span><span>JavaScript</span></div>
-            </div>
-
-            <!-- Пост 3 -->
-            <div class="blog-post" onclick="openPost('post3')">
-                <div class="date">20 июля 2026</div>
-                <div class="title">Создал VPN-сервис на VLESS</div>
-                <div class="desc">Как я собрал бесплатный VPN с обходом блокировок. Технические детали.</div>
-                <div class="tags"><span>VPN</span><span>VLESS</span><span>Linux</span></div>
-            </div>
-        </div>
-
-        <!-- ===== ПОЛНЫЙ ПОСТ 1 ===== -->
-        <div id="post1" class="post-full">
-            <div class="username" style="font-size: 22px;">Как я настроил Arch Linux с нуля</div>
-            <div class="post-date">📅 02 августа 2026 · ⏱️ 5 мин чтения</div>
-            <div class="post-tags"><span>Arch</span><span>Linux</span><span>i3</span><span>Rice</span></div>
-            <div class="divider"></div>
-            <p>В этой статье я расскажу, как я установил и настроил Arch Linux с нуля. Весь процесс занял около 2 часов.</p>
-            <h2>Установка</h2>
-            <p>Скачал образ с официального сайта, записал на флешку через <code>dd</code>. Загрузился, разметил диски через <code>fdisk</code>.</p>
-            <h2>Настройка i3wm</h2>
-            <p>В качестве оконного менеджера выбрал i3wm. Настроил тайлинговые раскладки и горячие клавиши.</p>
-            <h2>Неоновая тема</h2>
-            <p>Добавил pywal для генерации цветов, поставил неоновую тему для терминала и vscode.</p>
-            <div class="back-btn" onclick="closePost()">← Назад к списку</div>
-        </div>
-
-        <!-- ===== ПОЛНЫЙ ПОСТ 2 ===== -->
-        <div id="post2" class="post-full">
-            <div class="username" style="font-size: 22px;">Обновил стек до Vue 3 + Vite</div>
-            <div class="post-date">📅 28 июля 2026 · ⏱️ 4 мин чтения</div>
-            <div class="post-tags"><span>Vue</span><span>Vite</span><span>JavaScript</span></div>
-            <div class="divider"></div>
-            <p>Vue 3 вышел уже давно, но я всё никак не мог перейти. Решился — и не пожалел.</p>
-            <h2>Что изменилось</h2>
-            <p>Composition API, Teleport, Suspense — всё это реально упрощает жизнь. Сборка через Vite летает.</p>
-            <h2>Производительность</h2>
-            <p>Скорость сборки увеличилась в 3 раза. HMR работает мгновенно. Разрабатывать стало кайфово.</p>
-            <div class="back-btn" onclick="closePost()">← Назад к списку</div>
-        </div>
-
-        <!-- ===== ПОЛНЫЙ ПОСТ 3 ===== -->
-        <div id="post3" class="post-full">
-            <div class="username" style="font-size: 22px;">Создал VPN-сервис на VLESS</div>
-            <div class="post-date">📅 20 июля 2026 · ⏱️ 6 мин чтения</div>
-            <div class="post-tags"><span>VPN</span><span>VLESS</span><span>Linux</span></div>
-            <div class="divider"></div>
-            <p>Решил собрать свой VPN-сервис, чтобы обходить блокировки и не зависеть от платных провайдеров.</p>
-            <h2>Выбор протокола</h2>
-            <p>Остановился на VLESS — лёгкий, быстрый и сложно детектится. Поднял сервер на VPS за 5 баксов.</p>
-            <h2>Настройка</h2>
-            <p>Использовал Xray + Nginx. Настроил клиентов под Android и Windows. Всё работает как часы.</p>
-            <div class="back-btn" onclick="closePost()">← Назад к списку</div>
-        </div>
-
-        <div class="footer-tag" style="margin-top: 24px;">&gt; <span>Мои Тех Смейк</span> &lt;</div>
-
+    <!-- ===== НАВИГАЦИЯ ===== -->
+    <div class="nav-bar">
+        <a href="index.html">🏠 Главная</a>
+        <a href="about.html">👤 Обо мне</a>
+        <a href="tech.html">⚡ Тех Стек</a>
+        <a href="projects.html">📦 Проекты</a>
+        <a href="blog.html" class="active blog-link">📝 Блог</a>
     </div>
 
-    <script>
-        function openPost(postId) {
-            document.getElementById('blog-list').classList.add('hidden');
-            document.querySelectorAll('.post-full').forEach(el => el.classList.remove('active'));
-            document.getElementById(postId).classList.add('active');
-        }
+    <div class="divider"></div>
 
-        function closePost() {
-            document.getElementById('blog-list').classList.remove('hidden');
-            document.querySelectorAll('.post-full').forEach(el => el.classList.remove('active'));
-        }
-    </script>
+    <div class="username">&gt; Блог &lt;</div>
 
+    <div class="divider"></div>
+
+    <!-- ===== ЗАПИСИ ===== -->
+    <div class="blog-post">
+        <h3>📝 Первая запись</h3>
+        <p>Здесь будет текст вашей первой записи. Вы можете писать о коде, проектах или своих мыслях.</p>
+        <span class="date">📅 2 августа 2026</span>
+    </div>
+
+    <div class="blog-post">
+        <h3>🚀 Вторая запись</h3>
+        <p>Ещё одна запись. Сайт полностью адаптивен и работает на телефонах и ПК.</p>
+        <span class="date">📅 1 августа 2026</span>
+    </div>
+
+    <div class="blog-post">
+        <h3>💡 Идея для проекта</h3>
+        <p>Вы можете добавлять свои идеи, заметки или просто делиться интересными находками.</p>
+        <span class="date">📅 31 июля 2026</span>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="footer-tag">&gt; <span>ExteraTune</span> &lt;</div>
+
+</div>
 </body>
-                                                                         </html>
+</html>
