@@ -32,6 +32,14 @@
         .blog-post:hover h3{color:#ff7eb3}
         .blog-post p{color:#8888aa;font-size:13px;line-height:1.6}
         .blog-post .date{color:#555577;font-size:11px;margin-top:8px;display:block}
+        .blog-post .tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px}
+        .blog-post .tags span{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);padding:1px 10px;border-radius:20px;font-size:10px;color:#555577;transition:.3s}
+        .blog-post:hover .tags span{border-color:rgba(255,100,200,.1);color:#8888aa}
+        .subscribe{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:16px;padding:20px;margin:16px 0;text-align:center;transition:.3s}
+        .subscribe:hover{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08)}
+        .subscribe p{color:#8888aa;font-size:13px;line-height:1.6}
+        .subscribe a{color:#ff7eb3;text-decoration:underline;transition:.3s}
+        .subscribe a:hover{color:#ff4d7a}
         .footer-tag{text-align:center;color:#333355;font-size:13px;margin-top:20px;letter-spacing:1px;transition:.3s}
         .footer-tag:hover{color:#8888aa}
         .footer-tag span{color:#444466;opacity:.6;transition:.3s}
@@ -58,23 +66,61 @@
 
     <div class="divider"></div>
 
-    <!-- ===== ЗАПИСИ ===== -->
+    <!-- ===== ЗАПИСЬ 1 ===== -->
     <div class="blog-post">
-        <h3>📝 Первая запись</h3>
-        <p>Здесь будет текст вашей первой записи. Вы можете писать о коде, проектах или своих мыслях.</p>
+        <h3>🚀 Первый пост</h3>
+        <p>Привет! Это мой первый пост в блоге. Я решил создать этот сайт, чтобы делиться своими проектами, мыслями и идеями. Здесь я буду писать о программировании, технологиях и всём, что мне интересно. Надеюсь, тебе будет интересно читать! 😄</p>
+        <div class="tags"><span>#первыйпост</span><span>#приветствие</span><span>#начало</span></div>
         <span class="date">📅 2 августа 2026</span>
     </div>
 
+    <!-- ===== ЗАПИСЬ 2 ===== -->
     <div class="blog-post">
-        <h3>🚀 Вторая запись</h3>
-        <p>Ещё одна запись. Сайт полностью адаптивен и работает на телефонах и ПК.</p>
+        <h3>⚡ Как я создавал этот сайт</h3>
+        <p>Сайт сделан с помощью <strong>DeepSeek</strong> — искусственного интеллекта, который помог написать код. Хостинг — <strong>GitHub Pages</strong>. Всё началось с идеи сделать простую, но красивую страницу-визитку. Постепенно добавил плеер, тёмную тему, адаптивность и блог. Процесс был увлекательным! 🚀</p>
+        <div class="tags"><span>#разработка</span><span>#DeepSeek</span><span>#GitHubPages</span></div>
         <span class="date">📅 1 августа 2026</span>
     </div>
 
+    <!-- ===== ЗАПИСЬ 3 ===== -->
     <div class="blog-post">
-        <h3>💡 Идея для проекта</h3>
-        <p>Вы можете добавлять свои идеи, заметки или просто делиться интересными находками.</p>
-        <span class="date">📅 31 июля 2026</span>
+        <h3>💻 Мой стек технологий</h3>
+        <p>Основные языки: <strong>Python, JavaScript, TypeScript</strong>. Фреймворки: <strong>Flask, FastAPI, Vue.js, React</strong>. Для DevOps использую <strong>Docker, GitHub Actions, Nginx</strong>. Также работаю с <strong>PostgreSQL</strong> и <strong>Redis</strong>. Постоянно учусь новому и расширяю свой стек! 🔥</p>
+        <div class="tags"><span>#технологии</span><span>#Python</span><span>#DevOps</span></div>
+        <span class="date">📅 30 июля 2026</span>
+    </div>
+
+    <!-- ===== ЗАПИСЬ 4 ===== -->
+    <div class="blog-post">
+        <h3>🎯 Мои цели на 2026</h3>
+        <p>В этом году хочу: освоить <strong>Kubernetes</strong>, углубиться в <strong>TypeScript</strong>, написать свой первый open-source проект, выучить <strong>Go</strong>, улучшить навыки <strong>DevOps</strong>. А ещё — активно вести этот блог и делиться опытом! 💪</p>
+        <div class="tags"><span>#цели</span><span>#2026</span><span>#планы</span></div>
+        <span class="date">📅 25 июля 2026</span>
+    </div>
+
+    <!-- ===== ЗАПИСЬ 5 ===== -->
+    <div class="blog-post">
+        <h3>📚 Книги, которые я рекомендую</h3>
+        <p>Топ-3 книги для разработчика: «Clean Code» (Роберт Мартин), «Совершенный код» (Стив Макконнелл), «Python. К вершинам мастерства» (Лучано Рамальо). Чтение помогает не только писать лучше код, но и мыслить системно! 🧠</p>
+        <div class="tags"><span>#книги</span><span>#разработка</span><span>#саморазвитие</span></div>
+        <span class="date">📅 20 июля 2026</span>
+    </div>
+
+    <!-- ===== ЗАПИСЬ 6 ===== -->
+    <div class="blog-post">
+        <h3>💡 Цитата дня</h3>
+        <p style="font-style: italic; color: #aa99cc; font-size: 15px;">
+            «Лучший способ предсказать будущее — создать его самому»
+        </p>
+        <p style="color: #666688; font-size: 13px; margin-top: 4px;">— Питер Друкер</p>
+        <div class="tags"><span>#цитата</span><span>#мотивация</span></div>
+        <span class="date">📅 3 августа 2026</span>
+    </div>
+
+    <!-- ===== ПОДПИСАТЬСЯ ===== -->
+    <div class="subscribe">
+        <p>📬 Хочешь следить за обновлениями?<br>
+        Подпишись на мой <a href="https://t.me/ExteraTune" target="_blank">Telegram-канал</a> или <a href="https://github.com/ваш_ник" target="_blank">GitHub</a>! 🔔</p>
     </div>
 
     <div class="divider"></div>
