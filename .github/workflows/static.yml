@@ -1,43 +1,81 @@
-# Simple workflow for deploying static content to GitHub Pages
-name: Deploy static content to Pages
+# Workflow для деплоя статического сайта на GitHub Pages с Telegram уведомлениями
+name: Deploy to GitHub Pages
 
 on:
-  # Runs on pushes targeting the default branch
+  # Запуск при пуше в ветку main
   push:
     branches: ["main"]
 
-  # Allows you to run this workflow manually from the Actions tab
+  # Возможность запуска вручную из Actions
   workflow_dispatch:
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+# Права для деплоя на GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+# Ограничение на параллельные деплои
 concurrency:
   group: "pages"
   cancel-in-progress: false
 
 jobs:
-  # Single deploy job since we're just deploying
+  # Основная задача деплоя
   deploy:
+    timeout-minutes: 5
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
+      # 1. Клонируем репозиторий
+      - name: Checkout repository
         uses: actions/checkout@v4
+
+      # 2. Настраиваем GitHub Pages
       - name: Setup Pages
         uses: actions/configure-pages@v5
+
+      # 3. Загружаем артефакт
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
           path: '.'
+
+      # 4. Деплой на GitHub Pages
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
+
+      # 5. Отправка уведомления в Telegram
+      - name: Send Telegram notification
+        if: always()  # Отправляет уведомление даже при ошибке
+        run: |
+          # Определяем статус деплоя
+          if [ "${{ job.status }}" == "success" ]; then
+            STATUS="✅ УСПЕШНО"
+            EMOJI="🚀"
+            MESSAGE="Сайт успешно обновлён и доступен по ссылке!"
+          else
+            STATUS="❌ ОШИБКА"
+            EMOJI="🔥"
+            MESSAGE="При деплое произошла ошибка. Проверьте логи."
+          fi
+
+          # Формируем сообщение
+          TEXT="$EMOJI Деплой ExteraTune: $STATUS
+          
+$MESSAGE
+
+🌐 Ссылка: ${{ steps.deployment.outputs.page_url }}
+
+📦 Репозиторий: ${{ github.repository }}
+📅 Дата: $(date '+%d.%m.%Y %H:%M')"
+
+          # Отправляем в Telegram
+          curl -s -X POST https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage \
+          -d chat_id=${{ secrets.TELEGRAM_CHAT_ID }} \
+          -d text="$TEXT" \
+          -d parse_mode="Markdown"
