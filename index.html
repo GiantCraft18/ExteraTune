@@ -30,202 +30,53 @@
         .sub{text-align:center;color:#8888aa;font-size:14px;margin-top:4px}
         .sub span{background:rgba(255,255,255,.04);padding:2px 12px;border-radius:20px;border:1px solid rgba(255,255,255,.06);display:inline-block;transition:.3s}
         .sub span:hover{border-color:#ff7eb3;background:rgba(255,255,255,.06)}
-        
+
         /* ===== СОЦИАЛЬНЫЕ СЕТИ С ЭФФЕКТОМ СТЕКЛО ===== */
-        .social-glass {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin: 16px 0;
-            flex-wrap: wrap;
-        }
-        
-        .social-glass a {
-            background: rgba(255, 255, 255, 0.04);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            padding: 10px 14px;
-            border-radius: 14px;
-            color: #8888aa;
-            text-decoration: none;
-            font-size: 22px;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .social-glass a::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(255, 100, 200, 0.03), rgba(122, 0, 255, 0.03));
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-        
-        .social-glass a:hover {
-            color: #ff7eb3;
-            border-color: rgba(255, 100, 200, 0.15);
-            background: rgba(255, 255, 255, 0.06);
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 12px 35px rgba(255, 0, 150, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-        }
-        
-        .social-glass a:hover::before {
-            opacity: 1;
-        }
-        
-        .social-glass a:active {
-            transform: scale(0.92);
-        }
-        
-        .social-glass a .label {
-            font-size: 12px;
-            font-weight: 400;
-            letter-spacing: 0.3px;
-        }
+        .social-glass{display:flex;justify-content:center;gap:12px;margin:16px 0;flex-wrap:wrap}
+        .social-glass a{background:rgba(255,255,255,.04);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.06);padding:10px 14px;border-radius:14px;color:#8888aa;text-decoration:none;font-size:22px;transition:all .3s cubic-bezier(.16,1,.3,1);display:flex;align-items:center;gap:8px;box-shadow:0 4px 15px rgba(0,0,0,.1);position:relative;overflow:hidden}
+        .social-glass a::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(135deg,rgba(255,100,200,.03),rgba(122,0,255,.03));opacity:0;transition:opacity .4s}
+        .social-glass a:hover{color:#ff7eb3;border-color:rgba(255,100,200,.15);background:rgba(255,255,255,.06);transform:translateY(-3px)scale(1.02);box-shadow:0 12px 35px rgba(255,0,150,.05),inset 0 1px 0 rgba(255,255,255,.1)}
+        .social-glass a:hover::before{opacity:1}
+        .social-glass a:active{transform:scale(.92)}
+        .social-glass a .label{font-size:12px;font-weight:400;letter-spacing:.3px}
 
-        /* ===== СУПЕР-УЛУЧШЕННАЯ РАМКА ПЛЕЕРА ===== */
-        .player-wrapper {
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 20px;
-            padding: 8px;
-            margin: 16px 0;
-            border: none;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            position: relative;
-            box-shadow: 0 0 30px rgba(255, 100, 200, 0.03);
-        }
+        /* ===== УЛУЧШЕННАЯ РАМКА ПЛЕЕРА ===== */
+        .player-wrapper{background:rgba(255,255,255,.02);border-radius:20px;padding:8px;margin:16px 0;border:none;transition:all .4s cubic-bezier(.16,1,.3,1);position:relative;box-shadow:0 0 30px rgba(255,100,200,.03)}
+        .player-wrapper::before{content:'';position:absolute;top:-3px;left:-3px;right:-3px;bottom:-3px;border-radius:23px;background:linear-gradient(135deg,#ff7eb3,#7a00ff,#ff007a,#7a00ff,#ff7eb3);background-size:400% 400%;z-index:-1;animation:borderGlow 4s ease-in-out infinite;opacity:.35;transition:opacity .5s ease,filter .5s ease;filter:blur(2px)}
+        .player-wrapper::after{content:'';position:absolute;top:-6px;left:-6px;right:-6px;bottom:-6px;border-radius:26px;background:linear-gradient(135deg,rgba(255,100,200,.1),rgba(122,0,255,.1));z-index:-2;animation:glowPulse 3s ease-in-out infinite;filter:blur(15px)}
+        @keyframes borderGlow{0%{background-position:0% 50%;opacity:.35}25%{background-position:100% 50%;opacity:.5}50%{background-position:100% 100%;opacity:.6}75%{background-position:0% 100%;opacity:.5}100%{background-position:0% 50%;opacity:.35}}
+        @keyframes glowPulse{0%{opacity:.3;transform:scale(1)}50%{opacity:.6;transform:scale(1.02)}100%{opacity:.3;transform:scale(1)}}
+        .player-wrapper:hover::before{opacity:.9;filter:blur(4px)}
+        .player-wrapper:hover{transform:translateY(-3px)scale(1.005);box-shadow:0 0 60px rgba(255,100,200,.08),0 0 120px rgba(255,100,200,.03)}
+        .player-wrapper:active{transform:translateY(0)scale(.995)}
+        .player-wrapper iframe{width:100%;border-radius:14px;border:none;height:400px;display:block;position:relative;z-index:1;background:#0a0a12;box-shadow:inset 0 0 30px rgba(0,0,0,.5)}
+        .player-container{min-height:80px;display:flex;align-items:center;justify-content:center;border-radius:14px;overflow:hidden;position:relative;z-index:1}
 
-        .player-wrapper::before {
-            content: '';
-            position: absolute;
-            top: -3px;
-            left: -3px;
-            right: -3px;
-            bottom: -3px;
-            border-radius: 23px;
-            background: linear-gradient(135deg, #ff7eb3, #7a00ff, #ff007a, #7a00ff, #ff7eb3);
-            background-size: 400% 400%;
-            z-index: -1;
-            animation: borderGlow 4s ease-in-out infinite;
-            opacity: 0.35;
-            transition: opacity 0.5s ease, filter 0.5s ease;
-            filter: blur(2px);
-        }
+        /* ===== УЛУЧШЕННЫЙ ПЛЕЙСХОЛДЕР ===== */
+        .player-container .placeholder{color:#555577;font-size:13px;text-align:center;padding:40px 20px;background:rgba(255,255,255,.02);border-radius:14px;width:100%}
+        .player-container .placeholder .icon{font-size:36px;display:block;margin-bottom:8px;animation:pulseIcon 2s ease-in-out infinite}
+        @keyframes pulseIcon{0%,100%{opacity:.3;transform:scale(1)}50%{opacity:.7;transform:scale(1.05)}}
+        .player-container .placeholder a{color:#ff7eb3;text-decoration:underline;transition:.3s}
+        .player-container .placeholder a:hover{color:#ff4d7a}
 
-        .player-wrapper::after {
-            content: '';
-            position: absolute;
-            top: -6px;
-            left: -6px;
-            right: -6px;
-            bottom: -6px;
-            border-radius: 26px;
-            background: linear-gradient(135deg, rgba(255, 100, 200, 0.1), rgba(122, 0, 255, 0.1));
-            z-index: -2;
-            animation: glowPulse 3s ease-in-out infinite;
-            filter: blur(15px);
-        }
-
-        @keyframes borderGlow {
-            0% { background-position: 0% 50%; opacity: 0.35; }
-            25% { background-position: 100% 50%; opacity: 0.5; }
-            50% { background-position: 100% 100%; opacity: 0.6; }
-            75% { background-position: 0% 100%; opacity: 0.5; }
-            100% { background-position: 0% 50%; opacity: 0.35; }
-        }
-
-        @keyframes glowPulse {
-            0% { opacity: 0.3; transform: scale(1); }
-            50% { opacity: 0.6; transform: scale(1.02); }
-            100% { opacity: 0.3; transform: scale(1); }
-        }
-
-        .player-wrapper:hover::before {
-            opacity: 0.9;
-            filter: blur(4px);
-        }
-
-        .player-wrapper:hover {
-            transform: translateY(-3px) scale(1.005);
-            box-shadow: 0 0 60px rgba(255, 100, 200, 0.08), 0 0 120px rgba(255, 100, 200, 0.03);
-        }
-
-        .player-wrapper:active {
-            transform: translateY(0) scale(0.995);
-        }
-
-        .player-wrapper iframe {
-            width: 100%;
-            border-radius: 14px;
-            border: none;
-            height: 400px;
-            display: block;
-            position: relative;
-            z-index: 1;
-            background: #0a0a12;
-            box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.5);
-        }
-
-        .player-container {
-            min-height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 14px;
-            overflow: hidden;
-            position: relative;
-            z-index: 1;
-        }
-
-        .player-container .placeholder {
-            color: #555577;
-            font-size: 13px;
-            text-align: center;
-            padding: 40px 20px;
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 14px;
-            width: 100%;
-        }
-
-        .player-container .placeholder .icon {
-            font-size: 36px;
-            display: block;
-            margin-bottom: 8px;
-            animation: pulseIcon 2s ease-in-out infinite;
-        }
-
-        @keyframes pulseIcon {
-            0%, 100% { opacity: 0.3; transform: scale(1); }
-            50% { opacity: 0.7; transform: scale(1.05); }
-        }
-
-        .player-container .placeholder a {
-            color: #ff7eb3;
-            text-decoration: underline;
-            transition: 0.3s;
-        }
-
-        .player-container .placeholder a:hover {
-            color: #ff4d7a;
-        }
+        /* ===== МУЗЫКАЛЬНЫЙ БЛОК ===== */
+        .music-header{text-align:center;margin:0 0 12px}
+        .music-header .now-playing{color:#555577;font-size:11px;display:flex;align-items:center;justify-content:center;gap:8px}
+        .music-header .now-playing .dot{width:8px;height:8px;background:#4caf50;border-radius:50%;animation:blink 1s infinite}
+        @keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+        .music-header .track-name{color:#fff;font-size:15px;font-weight:700;margin-top:2px}
+        .music-header .track-artist{color:#8888aa;font-size:12px}
+        .music-open-btn{text-align:center;margin:4px 0 12px}
+        .music-open-btn a{display:inline-block;padding:8px 20px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:30px;color:#8888aa;text-decoration:none;font-size:12px;transition:.3s}
+        .music-open-btn a:hover{background:rgba(255,100,200,.08);border-color:rgba(255,100,200,.15);color:#ff7eb3;transform:translateY(-1px)}
 
         .footer-tag{text-align:center;color:#333355;font-size:13px;margin-top:20px;letter-spacing:1px;transition:.3s}
         .footer-tag:hover{color:#8888aa}
         .footer-tag span{color:#444466;opacity:.6;transition:.3s}
         .footer-tag:hover span{opacity:1;text-shadow:0 0 30px rgba(255,0,150,.1)}
-        
-        @media(max-width:500px){.container{padding:20px 15px}.nav-bar a{font-size:11px;padding:4px 10px}.avatar{width:90px;height:90px}.username{font-size:20px}.player-wrapper iframe{height:280px}.player-wrapper::before{border-radius:18px}.player-wrapper::after{border-radius:20px}.social-glass a{padding:8px 12px;font-size:18px}.social-glass a .label{font-size:10px}}
-        @media(max-width:380px){.container{padding:15px 10px}.username{font-size:17px}.avatar{width:70px;height:70px}.player-wrapper iframe{height:200px}.social-glass a{padding:6px 10px;font-size:16px}.social-glass a .label{font-size:9px}}
+
+        @media(max-width:500px){.container{padding:20px 15px}.nav-bar a{font-size:11px;padding:4px 10px}.avatar{width:90px;height:90px}.username{font-size:20px}.player-wrapper iframe{height:280px}.player-wrapper::before{border-radius:18px}.player-wrapper::after{border-radius:20px}.social-glass a{padding:8px 12px;font-size:18px}.social-glass a .label{font-size:10px}.music-header .track-name{font-size:13px}}
+        @media(max-width:380px){.container{padding:15px 10px}.username{font-size:17px}.avatar{width:70px;height:70px}.player-wrapper iframe{height:200px}.social-glass a{padding:6px 10px;font-size:16px}.social-glass a .label{font-size:9px}.music-header .track-name{font-size:12px}}
     </style>
 </head>
 <body>
@@ -249,26 +100,35 @@
 
     <div class="divider"></div>
 
-    <!-- ===== СОЦИАЛЬНЫЕ СЕТИ С ЭФФЕКТОМ СТЕКЛО ===== -->
+    <!-- ===== СОЦИАЛЬНЫЕ СЕТИ ===== -->
     <div class="social-glass">
-        <a href="https://t.me/ExteraTune" target="_blank">
-            📱 <span class="label">Telegram</span>
-        </a>
-        <a href="https://github.com/giantcraft18" target="_blank">
-            🐙 <span class="label">GitHub</span>
-        </a>
-        <a href="https://discord.gg/ваш_сервер" target="_blank">
-            💬 <span class="label">Discord</span>
-        </a>
-        <a href="https://tiktok.com/@ваш_ник" target="_blank">
-            🎵 <span class="label">TikTok</span>
-        </a>
-        <a href="https://steamcommunity.com/id/Delovoy_Cat" target="_blank">
-            🎮 <span class="label">Steam</span>
+        <a href="https://t.me/ExteraTune" target="_blank">📱 <span class="label">Telegram</span></a>
+        <a href="https://github.com/giantcraft18" target="_blank">🐙 <span class="label">GitHub</span></a>
+        <a href="https://discord.gg/ваш_сервер" target="_blank">💬 <span class="label">Discord</span></a>
+        <a href="https://tiktok.com/@ваш_ник" target="_blank">🎵 <span class="label">TikTok</span></a>
+        <a href="https://steamcommunity.com/id/Delovoy_Cat" target="_blank">🎮 <span class="label">Steam</span></a>
+    </div>
+
+    <!-- ===== УЛУЧШЕННЫЙ БЛОК ЯНДЕКС МУЗЫКИ ===== -->
+    
+    <!-- Заголовок "Сейчас играет" -->
+    <div class="music-header">
+        <div class="now-playing">
+            <span class="dot"></span>
+            Сейчас играет
+        </div>
+        <div class="track-name">ExteraTune — Моя песня</div>
+        <div class="track-artist">Яндекс Музыка</div>
+    </div>
+
+    <!-- Кнопка "Открыть в Яндекс Музыке" -->
+    <div class="music-open-btn">
+        <a href="https://music.yandex.ru/album/43077708/track/153681603" target="_blank">
+            🎧 Открыть в Яндекс Музыке
         </a>
     </div>
 
-    <!-- ===== ПЛЕЕР ===== -->
+    <!-- Плеер -->
     <div class="player-wrapper">
         <div id="p" class="player-container">
             <iframe src="https://music.yandex.ru/iframe/#track/153681603/43077708/" 
@@ -295,11 +155,11 @@
                 document.getElementById('p').innerHTML = `
                     <div class="placeholder">
                         <span class="icon">🎵</span>
-                        Плеер недоступен<br>
+                        Плеер временно недоступен<br>
                         <a href="https://music.yandex.ru/album/43077708/track/153681603" 
                            target="_blank" 
                            style="color: #ff7eb3; text-decoration: underline; margin-top: 6px; display: inline-block;">
-                           Открыть трек →
+                           Открыть в Яндекс Музыке →
                         </a>
                     </div>
                 `;
