@@ -3,227 +3,672 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>ExteraTune | Сайт</title>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <title>ExteraTune — Обновлённый сайт</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
     <style>
-        *{margin:0;padding:0;box-sizing:border-box}
-        body{background:#0a0a12;color:#c8c8e8;font-family:'JetBrains Mono',monospace;display:flex;justify-content:center;align-items:center;min-height:100vh;padding:20px;background-image:radial-gradient(circle at 20% 30%,rgba(255,0,150,.08)0%,transparent 50%),radial-gradient(circle at 80% 70%,rgba(100,0,255,.06)0%,transparent 50%)}
-        body::before,body::after{content:'';position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(60px);opacity:.3;animation:float 12s ease-in-out infinite alternate}
-        body::before{width:300px;height:300px;background:#ff007a;top:-100px;left:-100px}
-        body::after{width:400px;height:400px;background:#7a00ff;bottom:-150px;right:-150px;animation-delay:4s}
-        @keyframes float{0%{transform:translate(0,0)scale(1);opacity:.2}50%{transform:translate(50px,30px)scale(1.2);opacity:.4}100%{transform:translate(-30px,-20px)scale(.8);opacity:.2}}
-        .container{max-width:600px;width:100%;background:rgba(18,18,28,.75);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.06);border-radius:28px;padding:30px 25px 25px;box-shadow:0 20px 60px rgba(0,0,0,.6);position:relative;z-index:1;animation:in .8s cubic-bezier(.16,1,.3,1)}
-        @keyframes in{0%{opacity:0;transform:translateY(30px)scale(.96)}100%{opacity:1;transform:translateY(0)scale(1)}}
-        .divider{height:1px;background:linear-gradient(to right,transparent,rgba(255,255,255,.08),transparent);margin:16px 0;position:relative;overflow:hidden}
-        .divider::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(to right,transparent,#ff7eb3,transparent);opacity:.3;animation:shimmer 3s infinite}
-        @keyframes shimmer{0%{left:-100%}100%{left:100%}}
-        .nav-bar{display:flex;justify-content:center;gap:6px;flex-wrap:wrap;margin-bottom:20px;padding:6px;background:rgba(255,255,255,.02);border-radius:16px;border:1px solid rgba(255,255,255,.06)}
-        .nav-bar a{color:#8888aa;text-decoration:none;font-size:13px;padding:6px 14px;border-radius:30px;transition:.2s;font-weight:500;letter-spacing:.3px}
-        .nav-bar a:hover{color:#fff;background:rgba(255,255,255,.06)}
-        .nav-bar a.active{color:#ff7eb3;background:rgba(255,100,200,.08);border:1px solid rgba(255,100,200,.15)}
-        .nav-bar a.blog-link{color:#ff7eb3;border:1px solid rgba(255,100,200,.1)}
-        .nav-bar a.blog-link:hover{background:rgba(255,100,200,.12);border-color:rgba(255,100,200,.3)}
-        .avatar{width:120px;height:120px;border-radius:50%;margin:0 auto 16px;overflow:hidden;border:2px solid rgba(255,255,255,.08);box-shadow:0 0 40px rgba(255,100,200,.05);background:linear-gradient(135deg,#ff00a0,#7a00ff);padding:3px}
-        .avatar img{width:100%;height:100%;border-radius:50%;object-fit:cover;border:2px solid #0a0a12;transition:transform .4s}
-        .avatar:hover img{transform:scale(1.05)}
-        .username{text-align:center;font-size:24px;font-weight:700;background:linear-gradient(135deg,#ff7eb3,#7a00ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:inline-block;width:100%}
-        .sub{text-align:center;color:#8888aa;font-size:14px;margin-top:4px}
-        .sub span{background:rgba(255,255,255,.04);padding:2px 12px;border-radius:20px;border:1px solid rgba(255,255,255,.06);display:inline-block;transition:.3s}
-        .sub span:hover{border-color:#ff7eb3;background:rgba(255,255,255,.06)}
-        .social-glass{display:flex;justify-content:center;gap:12px;margin:16px 0;flex-wrap:wrap}
-        .social-glass a{background:rgba(255,255,255,.04);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.06);padding:10px 14px;border-radius:14px;color:#8888aa;text-decoration:none;font-size:22px;transition:all .3s cubic-bezier(.16,1,.3,1);display:flex;align-items:center;gap:8px;box-shadow:0 4px 15px rgba(0,0,0,.1);position:relative;overflow:hidden}
-        .social-glass a::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(135deg,rgba(255,100,200,.03),rgba(122,0,255,.03));opacity:0;transition:opacity .4s}
-        .social-glass a:hover{color:#ff7eb3;border-color:rgba(255,100,200,.15);background:rgba(255,255,255,.06);transform:translateY(-3px)scale(1.02);box-shadow:0 12px 35px rgba(255,0,150,.05),inset 0 1px 0 rgba(255,255,255,.1)}
-        .social-glass a:hover::before{opacity:1}
-        .social-glass a:active{transform:scale(.92)}
-        .social-glass a .label{font-size:12px;font-weight:400;letter-spacing:.3px}
-        
-        .player-wrapper{background:rgba(255,255,255,.02);border-radius:20px;padding:8px;margin:16px 0;border:none;transition:all .4s cubic-bezier(.16,1,.3,1);position:relative;box-shadow:0 0 30px rgba(255,100,200,.03)}
-        .player-wrapper::before{content:'';position:absolute;top:-3px;left:-3px;right:-3px;bottom:-3px;border-radius:23px;background:linear-gradient(135deg,#ff7eb3,#7a00ff,#ff007a,#7a00ff,#ff7eb3);background-size:400% 400%;z-index:-1;animation:borderGlow 4s ease-in-out infinite;opacity:.35;transition:opacity .5s ease,filter .5s ease;filter:blur(2px)}
-        .player-wrapper::after{content:'';position:absolute;top:-6px;left:-6px;right:-6px;bottom:-6px;border-radius:26px;background:linear-gradient(135deg,rgba(255,100,200,.1),rgba(122,0,255,.1));z-index:-2;animation:glowPulse 3s ease-in-out infinite;filter:blur(15px)}
-        @keyframes borderGlow{0%{background-position:0% 50%;opacity:.35}25%{background-position:100% 50%;opacity:.5}50%{background-position:100% 100%;opacity:.6}75%{background-position:0% 100%;opacity:.5}100%{background-position:0% 50%;opacity:.35}}
-        @keyframes glowPulse{0%{opacity:.3;transform:scale(1)}50%{opacity:.6;transform:scale(1.02)}100%{opacity:.3;transform:scale(1)}}
-        .player-wrapper:hover::before{opacity:.9;filter:blur(4px)}
-        .player-wrapper:hover{transform:translateY(-3px)scale(1.005);box-shadow:0 0 60px rgba(255,100,200,.08),0 0 120px rgba(255,100,200,.03)}
-        .player-wrapper:active{transform:translateY(0)scale(.995)}
-        .player-wrapper iframe{width:100%;border-radius:14px;border:none;height:400px;display:block;position:relative;z-index:1;background:#0a0a12;box-shadow:inset 0 0 30px rgba(0,0,0,.5)}
-        .player-container{min-height:80px;display:flex;align-items:center;justify-content:center;border-radius:14px;overflow:hidden;position:relative;z-index:1}
-        .player-container .placeholder{color:#555577;font-size:13px;text-align:center;padding:40px 20px;background:rgba(255,255,255,.02);border-radius:14px;width:100%}
-        .player-container .placeholder .icon{font-size:36px;display:block;margin-bottom:8px;animation:pulseIcon 2s ease-in-out infinite}
-        @keyframes pulseIcon{0%,100%{opacity:.3;transform:scale(1)}50%{opacity:.7;transform:scale(1.05)}}
-        .player-container .placeholder a{color:#ff7eb3;text-decoration:underline;transition:.3s}
-        .player-container .placeholder a:hover{color:#ff4d7a}
-        
-        .music-header{text-align:center;margin:0 0 12px}
-        .music-header .now-playing{color:#555577;font-size:11px;display:flex;align-items:center;justify-content:center;gap:8px}
-        .music-header .now-playing .dot{width:8px;height:8px;background:#4caf50;border-radius:50%;animation:blink 1s infinite}
-        @keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
-        .music-header .track-name{color:#fff;font-size:15px;font-weight:700;margin-top:2px}
-        .music-header .track-artist{color:#8888aa;font-size:12px}
-        .music-open-btn{text-align:center;margin:4px 0 12px}
-        .music-open-btn a{display:inline-block;padding:8px 20px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:30px;color:#8888aa;text-decoration:none;font-size:12px;transition:.3s}
-        .music-open-btn a:hover{background:rgba(255,100,200,.08);border-color:rgba(255,100,200,.15);color:#ff7eb3;transform:translateY(-1px)}
-        
-        .track-list{margin:16px 0}
-        .track-list .title{color:#555577;font-size:11px;text-align:center;margin-bottom:8px}
-        .track-item{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:12px;padding:10px 14px;margin-bottom:6px;cursor:pointer;transition:.3s}
-        .track-item:hover{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.08)}
-        .track-item.active{background:rgba(255,100,200,.06);border-color:rgba(255,100,200,.15)}
-        .track-item .icon{font-size:16px;width:24px;text-align:center}
-        .track-item .name{flex:1;font-size:13px}
-        .track-item .status{font-size:10px}
-        .track-item .status.active{color:#4caf50}
-        .track-item .status.inactive{color:#555577}
-        
-        .footer-tag{text-align:center;color:#333355;font-size:13px;margin-top:20px;letter-spacing:1px;transition:.3s}
-        .footer-tag:hover{color:#8888aa}
-        .footer-tag span{color:#444466;opacity:.6;transition:.3s}
-        .footer-tag:hover span{opacity:1;text-shadow:0 0 30px rgba(255,0,150,.1)}
-        
-        @media(max-width:500px){.container{padding:20px 15px}.nav-bar a{font-size:11px;padding:4px 10px}.avatar{width:90px;height:90px}.username{font-size:20px}.player-wrapper iframe{height:280px}.social-glass a{padding:8px 12px;font-size:18px}.social-glass a .label{font-size:10px}.music-header .track-name{font-size:13px}.track-item{padding:8px 12px}.track-item .name{font-size:12px}}
-        @media(max-width:380px){.container{padding:15px 10px}.username{font-size:17px}.avatar{width:70px;height:70px}.player-wrapper iframe{height:200px}.social-glass a{padding:6px 10px;font-size:16px}.social-glass a .label{font-size:9px}}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0b0b12;
+            color: #d0d0ee;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            background-image:
+                radial-gradient(circle at 15% 25%, rgba(255, 0, 150, 0.10) 0%, transparent 55%),
+                radial-gradient(circle at 85% 70%, rgba(100, 0, 255, 0.08) 0%, transparent 55%),
+                radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.01) 0%, transparent 70%);
+            line-height: 1.5;
+        }
+
+        /* Динамические фоновые сферы */
+        .orb {
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+            filter: blur(80px);
+            opacity: 0.25;
+            animation: orbFloat 14s ease-in-out infinite alternate;
+        }
+        .orb--1 {
+            width: 350px;
+            height: 350px;
+            background: #ff007a;
+            top: -120px;
+            left: -120px;
+        }
+        .orb--2 {
+            width: 450px;
+            height: 450px;
+            background: #7a00ff;
+            bottom: -150px;
+            right: -150px;
+            animation-delay: 5s;
+        }
+        .orb--3 {
+            width: 200px;
+            height: 200px;
+            background: #00d4ff;
+            top: 40%;
+            left: 60%;
+            animation-delay: 2s;
+            opacity: 0.12;
+        }
+
+        @keyframes orbFloat {
+            0% { transform: translate(0, 0) scale(1); opacity: 0.2; }
+            50% { transform: translate(60px, -40px) scale(1.3); opacity: 0.35; }
+            100% { transform: translate(-40px, 30px) scale(0.9); opacity: 0.2; }
+        }
+
+        /* Контейнер — стеклянный эффект */
+        .container {
+            max-width: 640px;
+            width: 100%;
+            background: rgba(16, 16, 28, 0.70);
+            backdrop-filter: blur(24px) saturate(1.2);
+            -webkit-backdrop-filter: blur(24px) saturate(1.2);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 36px;
+            padding: 32px 28px 28px;
+            box-shadow:
+                0 25px 70px rgba(0, 0, 0, 0.7),
+                inset 0 1px 0 rgba(255, 255, 255, 0.03);
+            position: relative;
+            z-index: 1;
+            animation: containerIn 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes containerIn {
+            0% { opacity: 0; transform: translateY(30px) scale(0.96); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.07), transparent);
+            margin: 18px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .divider::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, transparent, #ff7eb3, transparent);
+            opacity: 0.25;
+            animation: shimmer 4s infinite;
+        }
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        /* Навигация */
+        .nav-bar {
+            display: flex;
+            justify-content: center;
+            gap: 4px;
+            flex-wrap: wrap;
+            margin-bottom: 22px;
+            padding: 6px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+        }
+        .nav-bar a {
+            color: #8a8aaa;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            padding: 7px 16px;
+            border-radius: 40px;
+            transition: all 0.25s ease;
+            letter-spacing: 0.2px;
+        }
+        .nav-bar a:hover {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-1px);
+        }
+        .nav-bar a.active {
+            color: #ff7eb3;
+            background: rgba(255, 100, 200, 0.08);
+            border: 1px solid rgba(255, 100, 200, 0.12);
+        }
+        .nav-bar a.blog-link {
+            color: #ff7eb3;
+            border: 1px solid rgba(255, 100, 200, 0.08);
+        }
+        .nav-bar a.blog-link:hover {
+            background: rgba(255, 100, 200, 0.12);
+            border-color: rgba(255, 100, 200, 0.25);
+        }
+
+        /* Аватар */
+        .avatar {
+            width: 124px;
+            height: 124px;
+            border-radius: 50%;
+            margin: 0 auto 14px;
+            padding: 3px;
+            background: linear-gradient(135deg, #ff00a0, #7a00ff);
+            box-shadow: 0 0 50px rgba(255, 100, 200, 0.08);
+            transition: box-shadow 0.4s;
+        }
+        .avatar:hover {
+            box-shadow: 0 0 70px rgba(255, 100, 200, 0.18);
+        }
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #0b0b12;
+            display: block;
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .avatar:hover img {
+            transform: scale(1.04);
+        }
+
+        .username {
+            text-align: center;
+            font-size: 26px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ff7eb3, #b06aff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.3px;
+        }
+        .sub {
+            text-align: center;
+            color: #8888aa;
+            font-size: 14px;
+            margin-top: 4px;
+        }
+        .sub span {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 3px 16px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            display: inline-block;
+            transition: all 0.3s;
+            font-weight: 400;
+        }
+        .sub span:hover {
+            border-color: #ff7eb3;
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        /* Социальные кнопки — улучшенный glass */
+        .social-glass {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 18px 0 16px;
+            flex-wrap: wrap;
+        }
+        .social-glass a {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 10px 16px;
+            border-radius: 18px;
+            color: #9999bb;
+            text-decoration: none;
+            font-size: 20px;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+        .social-glass a::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255, 100, 200, 0.04), rgba(122, 0, 255, 0.04));
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+        .social-glass a:hover {
+            color: #ff7eb3;
+            border-color: rgba(255, 100, 200, 0.18);
+            background: rgba(255, 255, 255, 0.07);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 40px rgba(255, 0, 150, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+        }
+        .social-glass a:hover::before { opacity: 1; }
+        .social-glass a:active { transform: scale(0.94); }
+        .social-glass a .label {
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.2px;
+        }
+
+        /* Музыкальный блок */
+        .music-header {
+            text-align: center;
+            margin: 8px 0 10px;
+        }
+        .music-header .now-playing {
+            color: #6a6a8a;
+            font-size: 11px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .music-header .now-playing .dot {
+            width: 8px;
+            height: 8px;
+            background: #4caf50;
+            border-radius: 50%;
+            animation: blink 1.2s infinite;
+            box-shadow: 0 0 10px rgba(76, 175, 80, 0.3);
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.2; transform: scale(0.8); }
+        }
+        .music-header .track-name {
+            color: #fff;
+            font-size: 17px;
+            font-weight: 600;
+            margin-top: 4px;
+            letter-spacing: -0.2px;
+            transition: color 0.3s;
+        }
+        .music-header .track-artist {
+            color: #8888aa;
+            font-size: 13px;
+            font-weight: 400;
+        }
+
+        .music-open-btn {
+            text-align: center;
+            margin: 6px 0 16px;
+        }
+        .music-open-btn a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 24px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 40px;
+            color: #9999bb;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        .music-open-btn a:hover {
+            background: rgba(255, 100, 200, 0.08);
+            border-color: rgba(255, 100, 200, 0.18);
+            color: #ff7eb3;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 0, 150, 0.04);
+        }
+
+        /* Плеер — улучшенная обводка */
+        .player-wrapper {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 24px;
+            padding: 6px;
+            margin: 10px 0 18px;
+            border: none;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            box-shadow: 0 0 40px rgba(255, 100, 200, 0.02);
+        }
+        .player-wrapper::before {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            border-radius: 27px;
+            background: linear-gradient(135deg, #ff7eb3, #7a00ff, #ff007a, #7a00ff, #ff7eb3);
+            background-size: 300% 300%;
+            z-index: -1;
+            animation: borderGlow 5s ease-in-out infinite;
+            opacity: 0.35;
+            transition: opacity 0.6s, filter 0.6s;
+            filter: blur(4px);
+        }
+        .player-wrapper::after {
+            content: '';
+            position: absolute;
+            inset: -8px;
+            border-radius: 30px;
+            background: linear-gradient(135deg, rgba(255, 100, 200, 0.08), rgba(122, 0, 255, 0.08));
+            z-index: -2;
+            animation: glowPulse 4s ease-in-out infinite;
+            filter: blur(20px);
+        }
+        @keyframes borderGlow {
+            0% { background-position: 0% 50%; opacity: 0.35; }
+            33% { background-position: 100% 50%; opacity: 0.55; }
+            66% { background-position: 100% 100%; opacity: 0.65; }
+            100% { background-position: 0% 50%; opacity: 0.35; }
+        }
+        @keyframes glowPulse {
+            0%, 100% { opacity: 0.25; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.03); }
+        }
+        .player-wrapper:hover::before {
+            opacity: 0.85;
+            filter: blur(6px);
+        }
+        .player-wrapper:hover {
+            transform: translateY(-4px) scale(1.005);
+            box-shadow: 0 0 70px rgba(255, 100, 200, 0.06), 0 0 140px rgba(255, 100, 200, 0.02);
+        }
+        .player-wrapper:active {
+            transform: translateY(0) scale(0.995);
+        }
+        .player-wrapper iframe {
+            width: 100%;
+            border-radius: 18px;
+            border: none;
+            height: 400px;
+            display: block;
+            position: relative;
+            z-index: 1;
+            background: #0b0b12;
+            box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.5);
+        }
+        .player-container {
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 18px;
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+            background: transparent;
+        }
+
+        /* Список треков */
+        .track-list {
+            margin: 18px 0 8px;
+        }
+        .track-list .title {
+            color: #5a5a7a;
+            font-size: 12px;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .track-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 16px;
+            padding: 12px 16px;
+            margin-bottom: 7px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+        }
+        .track-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.08);
+            transform: translateX(4px);
+        }
+        .track-item.active {
+            background: rgba(255, 100, 200, 0.06);
+            border-color: rgba(255, 100, 200, 0.15);
+            box-shadow: 0 0 30px rgba(255, 100, 200, 0.02);
+        }
+        .track-item .icon {
+            font-size: 18px;
+            width: 28px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+        .track-item .name {
+            flex: 1;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .track-item .status {
+            font-size: 11px;
+            font-weight: 500;
+            padding: 2px 12px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.03);
+            flex-shrink: 0;
+        }
+        .track-item .status.active {
+            color: #4caf50;
+            background: rgba(76, 175, 80, 0.08);
+        }
+        .track-item .status.inactive {
+            color: #5a5a7a;
+        }
+
+        /* Футер */
+        .footer-tag {
+            text-align: center;
+            color: #3a3a5a;
+            font-size: 14px;
+            font-weight: 500;
+            margin-top: 22px;
+            letter-spacing: 2px;
+            transition: all 0.4s;
+        }
+        .footer-tag:hover {
+            color: #8888aa;
+        }
+        .footer-tag span {
+            color: #4a4a6a;
+            opacity: 0.5;
+            transition: all 0.4s;
+        }
+        .footer-tag:hover span {
+            opacity: 1;
+            text-shadow: 0 0 40px rgba(255, 0, 150, 0.08);
+        }
+
+        /* Адаптивность */
+        @media (max-width: 540px) {
+            .container { padding: 24px 16px; }
+            .nav-bar a { font-size: 12px; padding: 5px 12px; }
+            .avatar { width: 96px; height: 96px; }
+            .username { font-size: 22px; }
+            .player-wrapper iframe { height: 280px; }
+            .social-glass a { padding: 8px 12px; font-size: 18px; }
+            .social-glass a .label { font-size: 10px; }
+            .music-header .track-name { font-size: 15px; }
+            .track-item { padding: 10px 14px; }
+            .track-item .name { font-size: 13px; }
+        }
+
+        @media (max-width: 400px) {
+            .container { padding: 18px 12px; }
+            .username { font-size: 19px; }
+            .avatar { width: 76px; height: 76px; }
+            .player-wrapper iframe { height: 200px; }
+            .social-glass a { padding: 6px 10px; font-size: 16px; gap: 5px; }
+            .social-glass a .label { font-size: 9px; }
+            .track-item { padding: 8px 10px; gap: 10px; }
+            .track-item .name { font-size: 12px; }
+            .nav-bar a { font-size: 11px; padding: 4px 10px; }
+            .music-header .track-name { font-size: 13px; }
+        }
     </style>
 </head>
 <body>
-<div class="container">
 
-    <!-- ===== НАВИГАЦИЯ ===== -->
-    <div class="nav-bar">
-        <a href="index.html" class="active">🏠 Главная</a>
-        <a href="about.html">👤 Обо мне</a>
-        <a href="tech.html">⚡ Тех Стек</a>
-        <a href="projects.html">📦 Проекты</a>
-        <a href="blog.html" class="blog-link">📝 Блог</a>
+    <!-- Декоративные орбы -->
+    <div class="orb orb--1"></div>
+    <div class="orb orb--2"></div>
+    <div class="orb orb--3"></div>
+
+    <div class="container">
+
+        <!-- Навигация -->
+        <div class="nav-bar">
+            <a href="index.html" class="active">🏠 Главная</a>
+            <a href="about.html">👤 Обо мне</a>
+            <a href="tech.html">⚡ Тех Стек</a>
+            <a href="projects.html">📦 Проекты</a>
+            <a href="blog.html" class="blog-link">📝 Блог</a>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Аватар + имя -->
+        <div class="avatar">
+            <img src="https://avatars.mds.yandex.net/i?id=af33e631e93213bdb137b542a3c9cf7d_l-5318046-images-thumbs&n=13" alt="ExteraTune avatar">
+        </div>
+        <div class="username">ExteraTune</div>
+        <div class="sub"><span>@brilliant_boss</span></div>
+
+        <div class="divider"></div>
+
+        <!-- Социальные сети -->
+        <div class="social-glass">
+            <a href="https://t.me/ExteraTune" target="_blank">📱 <span class="label">Telegram</span></a>
+            <a href="https://github.com/giantcraft18" target="_blank">🐙 <span class="label">GitHub</span></a>
+            <a href="https://discord.gg/ваш_сервер" target="_blank">💬 <span class="label">Discord</span></a>
+            <a href="https://tiktok.com/@ваш_ник" target="_blank">🎵 <span class="label">TikTok</span></a>
+            <a href="https://steamcommunity.com/id/Delovoy_Cat" target="_blank">🎮 <span class="label">Steam</span></a>
+        </div>
+
+        <!-- Музыкальный блок -->
+        <div class="music-header">
+            <div class="now-playing">
+                <span class="dot"></span>
+                Сейчас играет
+            </div>
+            <div class="track-name" id="currentTrack">ExteraTune — Список песен моих</div>
+            <div class="track-artist">Яндекс Музыка</div>
+        </div>
+
+        <div class="music-open-btn">
+            <a href="https://music.yandex.ru/album/43077708/track/153681603" target="_blank" id="currentTrackLink">
+                🎧 Открыть в Яндекс Музыке
+            </a>
+        </div>
+
+        <!-- Плеер -->
+        <div class="player-wrapper">
+            <div id="p" class="player-container">
+                <iframe id="yandexPlayer"
+                        src="https://music.yandex.ru/iframe/#track/153681603/43077708/"
+                        width="100%"
+                        height="400"
+                        frameborder="0"
+                        allowfullscreen
+                        style="border-radius:18px; height:400px;">
+                </iframe>
+            </div>
+        </div>
+
+        <!-- Список треков -->
+        <div class="track-list">
+            <div class="title">📋 Все треки</div>
+
+            <div class="track-item active" onclick="changeTrack('153681603', '43077708', 'ExteraTune — Моя песня', 'https://music.yandex.ru/album/43077708/track/153681603')">
+                <span class="icon">▶️</span>
+                <span class="name" style="color:#fff;">ExteraTune — Моя песня</span>
+                <span class="status active">● Сейчас</span>
+            </div>
+
+            <div class="track-item" onclick="changeTrack('32038184', '1683700', 'Трек 2 — Исполнитель', 'https://music.yandex.ru/album/1683700/track/32038184')">
+                <span class="icon">⏸️</span>
+                <span class="name" style="color:#8888aa;">Трек 2 — Исполнитель</span>
+                <span class="status inactive">Добавлен</span>
+            </div>
+
+            <div class="track-item" onclick="changeTrack('133380973', '34193085', 'Трек 3 — Исполнитель', 'https://music.yandex.ru/album/34193085/track/133380973')">
+                <span class="icon">⏸️</span>
+                <span class="name" style="color:#8888aa;">Трек 3 — Исполнитель</span>
+                <span class="status inactive">Добавлен</span>
+            </div>
+
+            <div class="track-item" onclick="changeTrack('153320113', '42923060', 'Трек 4 — Исполнитель', 'https://music.yandex.ru/album/42923060/track/153320113')">
+                <span class="icon">⏸️</span>
+                <span class="name" style="color:#8888aa;">Трек 4 — Исполнитель</span>
+                <span class="status inactive">Добавлен</span>
+            </div>
+        </div>
+
+        <!-- Футер -->
+        <div class="footer-tag">&gt; <span>ExteraTune</span> &lt;</div>
+
     </div>
 
-    <div class="divider"></div>
-
-    <!-- ===== АВАТАР ===== -->
-    <div class="avatar"><img src="https://avatars.mds.yandex.net/i?id=af33e631e93213bdb137b542a3c9cf7d_l-5318046-images-thumbs&n=13" alt="avatar"></div>
-    <div class="username">ExteraTune</div>
-    <div class="sub"><span>@brilliant_boss</span></div>
-
-    <div class="divider"></div>
-
-    <!-- ===== СОЦИАЛЬНЫЕ СЕТИ ===== -->
-    <div class="social-glass">
-        <a href="https://t.me/ExteraTune" target="_blank">📱 <span class="label">Telegram</span></a>
-        <a href="https://github.com/giantcraft18" target="_blank">🐙 <span class="label">GitHub</span></a>
-        <a href="https://discord.gg/ваш_сервер" target="_blank">💬 <span class="label">Discord</span></a>
-        <a href="https://tiktok.com/@ваш_ник" target="_blank">🎵 <span class="label">TikTok</span></a>
-        <a href="https://steamcommunity.com/id/Delovoy_Cat" target="_blank">🎮 <span class="label">Steam</span></a>
-    </div>
-
-    <!-- ===== БЛОК ЯНДЕКС МУЗЫКИ ===== -->
-    
-    <div class="music-header">
-        <div class="now-playing">
-            <span class="dot"></span>
-            Сейчас играет
-        </div>
-        <div class="track-name" id="currentTrack">ExteraTune — Список песен моих</div>
-        <div class="track-artist">Яндекс Музыка</div>
-    </div>
-
-    <div class="music-open-btn">
-        <a href="https://music.yandex.ru/album/43077708/track/153681603" target="_blank" id="currentTrackLink">
-            🎧 Открыть в Яндекс Музыке
-        </a>
-    </div>
-
-    <div class="player-wrapper">
-        <div id="p" class="player-container">
-            <iframe id="yandexPlayer" src="https://music.yandex.ru/iframe/#track/153681603/43077708/" 
-                    width="100%" 
-                    height="400" 
-                    frameborder="0" 
-                    allowfullscreen 
-                    style="border-radius:14px;height:400px;">
-            </iframe>
-        </div>
-    </div>
-
-    <!-- ===== СПИСОК ВСЕХ ТРЕКОВ ===== -->
-    <div class="track-list">
-        <div class="title">📋 Все треки</div>
-        
-        <div class="track-item active" onclick="changeTrack('153681603', '43077708', 'Трек 1', 'https://music.yandex.ru/album/43077708/track/153681603')">
-            <span class="icon">▶️</span>
-            <span class="name" style="color:#fff;">ExteraTune — Моя песня</span>
-            <span class="status active">● Сейчас</span>
-        </div>
-        
-        <div class="track-item" onclick="changeTrack('32038184', '1683700', 'Трек 2 — Исполнитель', 'https://music.yandex.ru/album/1683700/track/32038184')">
-            <span class="icon">⏸️</span>
-            <span class="name" style="color:#8888aa;">Трек 2 — Исполнитель</span>
-            <span class="status inactive">Добавлен</span>
-        </div>
-        
-        <div class="track-item" onclick="changeTrack('133380973', '34193085', 'Трек 3 — Исполнитель', 'https://music.yandex.ru/album/34193085/track/133380973')">
-            <span class="icon">⏸️</span>
-            <span class="name" style="color:#8888aa;">Трек 3 — Исполнитель</span>
-            <span class="status inactive">Добавлен</span>
-        </div>
-        
-        <div class="track-item" onclick="changeTrack('153320113', '42923060', 'Трек 4 — Исполнитель', 'https://music.yandex.ru/album/42923060/track/153320113')">
-            <span class="icon">⏸️</span>
-            <span class="name" style="color:#8888aa;">Трек 4 — Исполнитель</span>
-            <span class="status inactive">Добавлен</span>
-        </div>
-    </div>
-
-    <!-- ===== ФУТЕР ===== -->
-    <div class="footer-tag">&gt; <span>ExteraTune</span> &lt;</div>
-
-</div>
-
-<script>
-    // ===== ПЕРЕКЛЮЧЕНИЕ ТРЕКОВ =====
-    function changeTrack(trackId, albumId, trackName, trackUrl) {
-        // Обновляем плеер
-        const player = document.getElementById('yandexPlayer');
-        if (player) {
-            player.src = `https://music.yandex.ru/iframe/#track/${trackId}/${albumId}/`;
-        }
-        
-        // Обновляем название трека
-        document.getElementById('currentTrack').textContent = trackName;
-        
-        // Обновляем ссылку
-        document.getElementById('currentTrackLink').href = trackUrl;
-        
-        // Обновляем список
-        const items = document.querySelectorAll('.track-item');
-        items.forEach(item => {
-            item.classList.remove('active');
-            const status = item.querySelector('.status');
-            const icon = item.querySelector('.icon');
-            const name = item.querySelector('.name');
-            if (status) {
-                status.textContent = 'Добавлен';
-                status.className = 'status inactive';
+    <script>
+        function changeTrack(trackId, albumId, trackName, trackUrl) {
+            // Обновляем iframe плеера
+            const player = document.getElementById('yandexPlayer');
+            if (player) {
+                player.src = `https://music.yandex.ru/iframe/#track/${trackId}/${albumId}/`;
             }
-            if (icon) icon.textContent = '⏸️';
-            if (name) name.style.color = '#8888aa';
-        });
-        
-        // Подсвечиваем активный трек
-        items.forEach(item => {
-            const name = item.querySelector('.name');
-            if (name && name.textContent === trackName) {
-                item.classList.add('active');
+
+            // Обновляем название и ссылку
+            document.getElementById('currentTrack').textContent = trackName;
+            document.getElementById('currentTrackLink').href = trackUrl;
+
+            // Сбрасываем все элементы списка
+            const items = document.querySelectorAll('.track-item');
+            items.forEach(item => {
+                item.classList.remove('active');
                 const status = item.querySelector('.status');
                 const icon = item.querySelector('.icon');
+                const name = item.querySelector('.name');
                 if (status) {
-                    status.textContent = '● Сейчас';
-                    status.className = 'status active';
+                    status.textContent = 'Добавлен';
+                    status.className = 'status inactive';
                 }
-                if (icon) icon.textContent = '▶️';
-                if (name) name.style.color = '#fff';
-            }
-        });
-    }
-</script>
+                if (icon) icon.textContent = '⏸️';
+                if (name) name.style.color = '#8888aa';
+            });
+
+            // Подсвечиваем выбранный трек
+            items.forEach(item => {
+                const name = item.querySelector('.name');
+                if (name && name.textContent === trackName) {
+                    item.classList.add('active');
+                    const status = item.querySelector('.status');
+                    const icon = item.querySelector('.icon');
+                    if (status) {
+                        status.textContent = '● Сейчас';
+                        status.className = 'status active';
+                    }
+                    if (icon) icon.textContent = '▶️';
+                    if (name) name.style.color = '#fff';
+                }
+            });
+        }
+    </script>
 
 </body>
 </html>
